@@ -1,0 +1,13 @@
+@import "./index.css";
+
+.app-container {
+  display: flex;
+}
+
+.app-panel {
+  width: 25%;
+}
+
+.app-page {
+  width: calc(100% - 25%);
+}

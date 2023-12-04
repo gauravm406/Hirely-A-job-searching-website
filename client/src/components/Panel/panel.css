@@ -1,0 +1,85 @@
+@import "../../index.css";
+
+.panel-main {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.panel-logo-brand-container {
+  height: 4.5321rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.panel-logo-brand-container h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+}
+
+.panel-menu-container {
+  height: calc(100vh - 4.5321rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.panel-menu-container div {
+  padding: 0.5rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  color: var(--primary-gray-color);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.1s ease-in;
+}
+
+.panel-menu-container div:hover {
+  background-color: rgb(238, 239, 243);
+}
+
+.panel-menu-container div h3 {
+  font-weight: 500;
+  font-size: 1.124rem;
+}
+
+.panel-logout-btn-container {
+  color: rgb(248, 113, 113) !important;
+  background-color: rgba(254, 226, 226, 0.6);
+}
+
+.panel-logout-btn-container:hover {
+  background-color: rgba(254, 226, 226, 0.9) !important;
+}
+
+.active-page {
+  color: var(--primary-blue-color) !important;
+  background-color: rgb(238, 239, 243);
+}
+
+.panel-menu-item {
+  position: relative;
+}
+
+.panel-bookmark-number {
+  position: absolute;
+  right: -35px;
+  top: 7px;
+  font-size: 0.7rem;
+  padding: 5px 10px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 50% !important;
+  background-color: rgba(254, 226, 226, 0.6) !important;
+  color: rgb(248, 113, 113) !important;
+}
+
+.panel-bookmark-number:hover {
+  background-color: rgba(254, 226, 226, 0.6) !important;
+  color: rgb(248, 113, 113) !important;
+}

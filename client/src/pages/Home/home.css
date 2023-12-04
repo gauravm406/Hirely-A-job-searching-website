@@ -1,0 +1,63 @@
+@import "../../index.css";
+
+.home-main {
+  background-color: rgb(238, 239, 243);
+  padding: 0rem 1rem;
+  height: calc(100vh - 4.5321rem);
+  padding-top: 2rem;
+  overflow: auto;
+}
+
+.home-main::-webkit-scrollbar {
+  display: none;
+}
+
+.home-stats-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-around;
+  color: rgba(247, 245, 245, 0.5);
+  margin-bottom: 3rem;
+}
+
+.home-stats {
+  width: 16rem;
+  padding: 0rem 0.8rem;
+  border-radius: 1rem;
+  background: linear-gradient(
+    to right top,
+    rgb(37, 99, 235),
+    rgb(29, 78, 216),
+    rgba(30, 64, 175, 0.9)
+  );
+  box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.4),
+    0 8px 10px -6px rgba(59, 130, 246, 0.4);
+  display: grid;
+  grid-template-columns: 30% 60% 10%;
+  place-items: center;
+}
+
+.home-status-logo-container {
+  padding: 0.3rem 0.5rem;
+  border: 2px dashed;
+  border-radius: 10px;
+}
+
+.home-stats-desc p {
+  color: rgba(247, 245, 245, 0.8);
+}
+
+.home-stats h2 {
+  font-weight: 700;
+  font-size: 3rem;
+}
+
+.home-stats-logo-desc-container {
+  display: flex;
+}
+
+.home-chart-container {
+  width: 80%;
+  margin: auto;
+  padding-bottom: 2rem;
+}

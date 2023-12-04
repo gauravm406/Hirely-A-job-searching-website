@@ -1,0 +1,31 @@
+@import "../../index.css";
+
+.navbar-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 4.5321rem;
+  padding: 0rem 2rem;
+  border-bottom-width: 1px;
+  border-bottom-color: rgb(229, 231, 235);
+  border-bottom-style: solid;
+}
+
+.navbar-main h4 {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.navbar-main h4 span {
+  font-weight: 500;
+}
+
+.navbar-profile-pic-container {
+  background-image: url("../../assets/p9.jpeg");
+  height: 3.5rem;
+  width: 3.5rem;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  cursor: pointer;
+}

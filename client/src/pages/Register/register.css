@@ -1,0 +1,169 @@
+@import "../../index.css";
+
+.register-main {
+  padding: 3rem 7rem;
+  display: flex;
+  gap: 3rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.register-aside-container {
+  width: 35%;
+  background-color: var(--primary-blue-color);
+  padding: 2.5rem;
+  border-radius: 1rem;
+  color: white;
+}
+
+.register-aside-brandname {
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: 2.4px;
+}
+
+.register-aside-slogan {
+  font-weight: 500;
+  font-size: 1.875rem;
+  margin-top: 40px;
+}
+
+.register-aside-description {
+  margin-top: 24px;
+}
+
+.register-aside-review-container {
+  padding: 1rem;
+  border-radius: 0.75rem;
+  margin-top: 40px;
+  background-color: rgb(30, 64, 175);
+}
+
+.register-aside-review-container section {
+  margin-top: 0.5rem;
+  text-align: end;
+}
+
+.register-aside-review-container section h4 {
+  font-size: 1.125rem;
+}
+
+.register-aside-review-container section p {
+  color: var(--primary-gray-color);
+}
+
+.register-form-container {
+  width: calc(50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+.register-form-container h2 {
+  font-size: 2.25rem;
+  font-weight: 500;
+}
+
+.register-signup-form,
+.register-login-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.register-signup-form label,
+.register-login-form label {
+  color: var(--primary-gray-color);
+}
+
+.register-signup-form input,
+.register-login-form input {
+  margin-bottom: 1rem;
+  padding: 1.5rem;
+  font-weight: 400;
+  margin-top: 6px;
+  border-radius: 0.375rem;
+  border: 1px solid var(--primary-gray-color);
+  transition: 0.3s ease;
+}
+
+.register-signup-form input:hover,
+.register-login-form input:hover {
+  border: 1px solid var(--primary-blue-color);
+}
+
+.register-signup-form input:focus,
+.register-login-form input:focus {
+  outline: 1px solid var(--primary-blue-color);
+}
+
+.register-signup-form button,
+.register-login-form button {
+  margin-top: 1rem;
+  padding: 1.1rem;
+  border-radius: 0.375rem;
+  border: none;
+  background-color: var(--primary-blue-color);
+  color: white;
+  letter-spacing: 0.8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-login-form .register-demo-user {
+  margin-top: 1rem;
+  color: var(--primary-gray-color);
+  cursor: pointer;
+  transition: 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.register-login-form span:hover {
+  color: var(--primary-blue-color);
+}
+
+.register-question {
+  color: var(--primary-gray-color);
+}
+
+.register-question span {
+  color: var(--primary-blue-color);
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 1025px) {
+  .register-main {
+    height: 100vh;
+  }
+
+  .register-aside-container {
+    width: 40%;
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  .register-main {
+    height: 100vh;
+  }
+
+  .register-aside-container {
+    display: none;
+  }
+
+  .register-form-container {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .register-main {
+    padding: 1rem;
+    height: 100vh;
+  }
+}
