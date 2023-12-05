@@ -63,7 +63,12 @@ const JobDetails = () => {
                   <p>{jobData.companyName}</p>
                 </div>
                 <div className="job-image-container">
-                  <img src={jobData.image} alt="" />
+                  <img
+                    src={`${import.meta.env.VITE_REACT_APP_HOST}/${
+                      jobData.image
+                    }`}
+                    alt=""
+                  />
                 </div>
               </div>
               <p className="rating-and-reviews">

@@ -26,3 +26,34 @@ export const getJobById = async (req, res) => {
     res.status(500).json("Internal server error");
   }
 };
+
+export const createJob = async (req, res) => {
+  const {
+    image,
+    jobTitle,
+    companyName,
+    experience,
+    description,
+    location,
+    user,
+  } = req.body;
+
+  try {
+    const job = new Job({
+      image,
+      jobTitle,
+      companyName,
+      experience,
+      description,
+      location,
+      user,
+    });
+
+    const createdJob = await job.save();
+
+    res.status(200).json({ message: "Job posted successfully", createdJob });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json("Internal server error");
+  }
+};

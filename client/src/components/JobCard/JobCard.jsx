@@ -91,7 +91,10 @@ const JobCard = ({ job }) => {
           <p>{job.companyName}</p>
         </div>
         <div className="job-image-container">
-          <img src={job.image} alt="" />
+          <img
+            src={`${import.meta.env.VITE_REACT_APP_HOST}/${job.image}`}
+            alt=""
+          />
         </div>
       </div>
       <p className="rating-and-reviews">
