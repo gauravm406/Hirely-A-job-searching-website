@@ -21,9 +21,13 @@ import ApplicantDetails from "./pages/ApplicantDetails/ApplicantDetails.jsx";
 
 Chart.register(CategoryScale);
 
-const DefaultLayout = ({ children }) => (
+const DefaultLayout = ({ children, sidebar }) => (
   <div className="app-container">
-    <div className="app-panel">
+    <div
+      className={
+        sidebar === "active" ? "active app-panel" : "inactive app-panel"
+      }
+    >
       <Panel />
     </div>
     <div className="app-page">
@@ -35,6 +39,7 @@ const DefaultLayout = ({ children }) => (
 
 export default function App() {
   const userInfo = useSelector((state) => state.user.userInfo);
+  const sidebar = useSelector((state) => state.user.sidebar);
 
   return (
     <BrowserRouter>
@@ -43,7 +48,7 @@ export default function App() {
           path="/"
           element={
             userInfo ? (
-              <DefaultLayout>
+              <DefaultLayout sidebar={sidebar}>
                 <Home />
               </DefaultLayout>
             ) : (
@@ -54,7 +59,7 @@ export default function App() {
         <Route
           path="/all_jobs"
           element={
-            <DefaultLayout>
+            <DefaultLayout sidebar={sidebar}>
               <Alljobs />
             </DefaultLayout>
           }
@@ -62,7 +67,7 @@ export default function App() {
         <Route
           path="/add_jobs"
           element={
-            <DefaultLayout>
+            <DefaultLayout sidebar={sidebar}>
               <AddJobs />
             </DefaultLayout>
           }
@@ -70,7 +75,7 @@ export default function App() {
         <Route
           path="/profile"
           element={
-            <DefaultLayout>
+            <DefaultLayout sidebar={sidebar}>
               <Pofile />
             </DefaultLayout>
           }
@@ -78,7 +83,7 @@ export default function App() {
         <Route
           path="/job_details/:id"
           element={
-            <DefaultLayout>
+            <DefaultLayout sidebar={sidebar}>
               <JobDetails />
             </DefaultLayout>
           }
@@ -86,7 +91,7 @@ export default function App() {
         <Route
           path="/applies"
           element={
-            <DefaultLayout>
+            <DefaultLayout sidebar={sidebar}>
               <Applies />
             </DefaultLayout>
           }
@@ -94,7 +99,7 @@ export default function App() {
         <Route
           path="/bookmarks"
           element={
-            <DefaultLayout>
+            <DefaultLayout sidebar={sidebar}>
               <Bookmarks />
             </DefaultLayout>
           }
@@ -102,7 +107,7 @@ export default function App() {
         <Route
           path="/applications"
           element={
-            <DefaultLayout>
+            <DefaultLayout sidebar={sidebar}>
               <Applications />
             </DefaultLayout>
           }
@@ -110,7 +115,7 @@ export default function App() {
         <Route
           path="/applicant_details/:applicationId/:userId"
           element={
-            <DefaultLayout>
+            <DefaultLayout sidebar={sidebar}>
               <ApplicantDetails />
             </DefaultLayout>
           }

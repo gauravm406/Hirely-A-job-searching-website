@@ -4,6 +4,7 @@ const initialState = {
   userInfo: localStorage.getItem("userInfo")
     ? JSON.parse(localStorage.getItem("userInfo"))
     : null,
+  sidebar: "inactive",
 };
 
 export const userSlice = createSlice({
@@ -18,9 +19,18 @@ export const userSlice = createSlice({
       state.userInfo = null;
       localStorage.removeItem("userInfo");
     },
+
+    makeSidebarActive: (state) => {
+      state.sidebar = "active";
+    },
+
+    makeSidebarInactive: (state) => {
+      state.sidebar = "inactive";
+    },
   },
 });
 
-export const { addUser, removeUser } = userSlice.actions;
+export const { addUser, removeUser, makeSidebarActive, makeSidebarInactive } =
+  userSlice.actions;
 
 export default userSlice.reducer;

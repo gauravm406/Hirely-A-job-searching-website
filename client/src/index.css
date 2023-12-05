@@ -19,6 +19,7 @@ body {
   margin: 0;
   font-family: "Poppins", sans-serif;
   letter-spacing: 0.8px;
+  position: relative;
 }
 
 .loader {

@@ -45,3 +45,9 @@
 .add-job-form div label {
   color: var(--primary-gray-color);
 }
+
+@media only screen and (max-width: 480px) {
+  .add-job-form {
+    grid-template-columns: 100%;
+  }
+}

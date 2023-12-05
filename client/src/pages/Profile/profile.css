@@ -137,3 +137,20 @@
 .profile-save-changes-btn-container button:hover {
   background-color: var(--secondary-blue-color);
 }
+
+@media only screen and (max-width: 480px) {
+  .profile-main-btns-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .profile-main-btns-container button {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: rgb(229 231 235);
+    letter-spacing: 0.8px;
+    text-transform: capitalize;
+    cursor: not-allowed;
+    height: 3.3rem;
+  }
+}

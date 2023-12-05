@@ -1,13 +1,68 @@
-@import "./index.css";
-
 .app-container {
   display: flex;
 }
 
 .app-panel {
   width: 25%;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 .app-page {
   width: calc(100% - 25%);
+}
+
+@media only screen and (max-width: 1025px) {
+  .app-panel {
+    width: 30%;
+  }
+
+  .app-page {
+    width: calc(100% - 30%);
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  .active {
+    display: block;
+    position: absolute;
+    background-color: rgba(255, 255, 255);
+    width: 50%;
+    left: 0;
+  }
+
+  /* Slide out to the left */
+  .inactive {
+    opacity: 0;
+    transform: translateX(-50%);
+    pointer-events: none;
+    visibility: hidden;
+    position: absolute;
+  }
+
+  .app-page {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .active {
+    display: block;
+    position: absolute;
+    background-color: rgba(255, 255, 255);
+    width: 80%;
+    left: 0;
+  }
+
+  /* Slide out to the left */
+  .inactive {
+    opacity: 0;
+    transform: translateX(-80%);
+    pointer-events: none;
+    visibility: hidden;
+    position: absolute;
+  }
+
+  .app-page {
+    width: 100%;
+  }
 }

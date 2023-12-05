@@ -13,6 +13,7 @@ import { FaRegBookmark } from "react-icons/fa6";
 import { MdDoneAll } from "react-icons/md";
 import { removeApplication } from "../../store/slices/applications.js";
 import { FiSend } from "react-icons/fi";
+import { makeSidebarInactive } from "../../store/slices/user.js";
 import axios from "axios";
 import "./panel.css";
 
@@ -79,6 +80,7 @@ const Panel = () => {
           onClick={() => {
             navigate("/");
             setCurrentPage("HOME");
+            dispatch(makeSidebarInactive());
           }}
         >
           <FiHome size={24} />
@@ -89,6 +91,7 @@ const Panel = () => {
           onClick={() => {
             navigate("/all_jobs");
             setCurrentPage("ALL_JOBS");
+            dispatch(makeSidebarInactive());
           }}
         >
           <BsFilesAlt size={24} />
@@ -106,6 +109,7 @@ const Panel = () => {
               onClick={() => {
                 navigate("/bookmarks");
                 setCurrentPage("BOOKMARKS");
+                dispatch(makeSidebarInactive());
               }}
             >
               <FaRegBookmark size={24} />
@@ -125,6 +129,7 @@ const Panel = () => {
               onClick={() => {
                 navigate("/applieS");
                 setCurrentPage("APPLIES");
+                dispatch(makeSidebarInactive());
               }}
             >
               <MdDoneAll size={24} />
@@ -147,6 +152,7 @@ const Panel = () => {
             onClick={() => {
               navigate("/applications");
               setCurrentPage("APPLICATIONS");
+              dispatch(makeSidebarInactive());
             }}
           >
             <FiSend size={24} />
@@ -162,6 +168,7 @@ const Panel = () => {
             onClick={() => {
               navigate("/add_jobs");
               setCurrentPage("ADD_JOBS");
+              dispatch(makeSidebarInactive());
             }}
           >
             <FaPlus size={24} />
@@ -173,6 +180,7 @@ const Panel = () => {
           onClick={() => {
             navigate("/profile");
             setCurrentPage("PROFILE");
+            dispatch(makeSidebarInactive());
           }}
         >
           <MdPersonOutline size={24} />
