@@ -23,7 +23,9 @@ const Applies = () => {
 
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_REACT_APP_HOST}/api/job/get_jobs`,
+          `${import.meta.env.VITE_REACT_APP_HOST}/api/job/get_applied_jobs/${
+            userInfo._id
+          }`,
           { withCredentials: true }
         );
 
@@ -45,20 +47,8 @@ const Applies = () => {
     fetchJobs();
   }, []);
 
-  useEffect(() => {
-    const tempFilteredJobs = jobsData?.filter((job) => {
-      // Assuming userInfo has a bookmarks array
-      const userApplies = userInfo?.appliedJobs;
-
-      // Check if the job's _id is present in the bookmarks array
-      return userApplies?.some((bookmark) => bookmark.job === job._id);
-    });
-
-    setFilteredJobs(tempFilteredJobs);
-  }, [jobsData, userInfo]);
-
   let itemsPerPage = 6;
-  let totalPages = Math.ceil(filteredJobs?.length / itemsPerPage);
+  let totalPages = Math.ceil(jobsData?.length / itemsPerPage);
   let lastIndex = currPage * itemsPerPage;
   let firstIndex = lastIndex - itemsPerPage;
   return (
@@ -68,7 +58,7 @@ const Applies = () => {
       ) : (
         <div className="all-jobs">
           <section className="jobs-grid">
-            {filteredJobs?.map(
+            {jobsData?.map(
               (job, index) =>
                 index >= firstIndex &&
                 index < lastIndex && <JobCard key={index} job={job} />

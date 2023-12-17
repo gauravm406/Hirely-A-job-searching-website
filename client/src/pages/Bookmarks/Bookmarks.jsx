@@ -7,11 +7,11 @@ import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { useSelector } from "react-redux";
 import JobCard from "../../components/JobCard/JobCard";
+import { toast } from "react-toastify";
 
 const Bookmarks = () => {
   const [jobsData, setJobsData] = useState();
   const [isJobsFetching, setIsJobsFetching] = useState(false);
-  const [filteredJobs, setFilteredJobs] = useState();
   const [currPage, setCurrPage] = useState(1);
 
   const userInfo = useSelector((state) => state.user.userInfo);
@@ -23,7 +23,9 @@ const Bookmarks = () => {
 
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_REACT_APP_HOST}/api/job/get_jobs`,
+          `${import.meta.env.VITE_REACT_APP_HOST}/api/job/get_bookmarks_jobs/${
+            userInfo._id
+          }`,
           { withCredentials: true }
         );
 
@@ -43,22 +45,10 @@ const Bookmarks = () => {
     };
 
     fetchJobs();
-  }, []);
-
-  useEffect(() => {
-    const tempFilteredJobs = jobsData?.filter((job) => {
-      // Assuming userInfo has a bookmarks array
-      const userBookmarks = userInfo?.bookmarkItems;
-
-      // Check if the job's _id is present in the bookmarks array
-      return userBookmarks?.some((bookmark) => bookmark.job === job._id);
-    });
-
-    setFilteredJobs(tempFilteredJobs);
-  }, [jobsData, userInfo]);
+  }, [userInfo]);
 
   let itemsPerPage = 6;
-  let totalPages = Math.ceil(filteredJobs?.length / itemsPerPage);
+  let totalPages = Math.ceil(jobsData?.length / itemsPerPage);
   let lastIndex = currPage * itemsPerPage;
   let firstIndex = lastIndex - itemsPerPage;
 
@@ -69,7 +59,7 @@ const Bookmarks = () => {
       ) : (
         <div className="all-jobs">
           <section className="jobs-grid">
-            {filteredJobs?.map(
+            {jobsData?.map(
               (job, index) =>
                 index >= firstIndex &&
                 index < lastIndex && <JobCard key={index} job={job} />

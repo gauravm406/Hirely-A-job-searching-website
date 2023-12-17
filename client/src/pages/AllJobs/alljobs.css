@@ -11,6 +11,10 @@
   overflow: auto;
 }
 
+.all-jobs-main-override {
+  display: block !important;
+}
+
 .all-jobs-main::-webkit-scrollbar {
   display: none;
 }
@@ -51,6 +55,13 @@
 .all-jobs {
   height: 100%;
   width: 100%;
+}
+
+.all-jobs-loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100% - 3.9986rem - 2rem);
 }
 
 .job-length-sort-filter-container {
