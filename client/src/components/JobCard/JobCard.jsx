@@ -93,7 +93,7 @@ const JobCard = ({ job }) => {
         <div className="job-image-container">
           <img
             src={`${import.meta.env.VITE_REACT_APP_HOST}/${job.image}`}
-            alt=""
+            alt={job.companyName}
           />
         </div>
       </div>

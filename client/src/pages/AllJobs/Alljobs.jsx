@@ -29,7 +29,7 @@ const Alljobs = () => {
     "Title (Z-A)",
   ];
 
-  // fetch data on change of currPage
+  // fetch data on change of currPage, experience and location
   useEffect(() => {
     fetchData();
   }, [currPage, selectedExperience, selectedLocation]);
@@ -137,13 +137,7 @@ const Alljobs = () => {
 
       setFilteredJobs([...tempJobs]);
     }
-  }, [
-    jobsData,
-    searchQuery,
-    selectedLocation,
-    selectedExperience,
-    sortByValue,
-  ]);
+  }, [jobsData, sortByValue]);
 
   // set filteres to default
   const handleClearFilters = () => {

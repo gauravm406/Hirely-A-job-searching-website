@@ -67,7 +67,7 @@ const JobDetails = () => {
                     src={`${import.meta.env.VITE_REACT_APP_HOST}/${
                       jobData.image
                     }`}
-                    alt=""
+                    alt={jobData.companyName}
                   />
                 </div>
               </div>
