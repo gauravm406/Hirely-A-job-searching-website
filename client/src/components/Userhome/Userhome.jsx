@@ -80,15 +80,6 @@ const Userhome = () => {
     setUserChartData(tempChartData);
   }, [userInfo]);
 
-  useEffect(() => {
-    // Simulate a delay of 2 seconds
-    const timeoutId = setTimeout(() => {
-      console.log("Userhome component loaded");
-    }, 10000);
-
-    return () => clearTimeout(timeoutId);
-  }, []);
-
   return (
     <>
       {/* SEO CONFIGURATIONS */}
