@@ -1,5 +1,5 @@
 import React from "react";
-import mobileview from "../../assets/mobile_view.png";
+import mobileview from "../../assets/mobile_view.webp";
 import { useNavigate } from "react-router-dom";
 import "./welcome.css";
 
