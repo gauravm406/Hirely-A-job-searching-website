@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Bar } from "react-chartjs-2";
 import { addApplication } from "../../store/slices/applications.js";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 
 const AdminHome = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -143,6 +144,13 @@ const AdminHome = () => {
 
   return (
     <div className="home-main">
+      {/* SEO CONFIGURATIONS */}
+      <Helmet>
+        <title>{`${userInfo?.name} - Hirely.com`}</title>
+        <meta name="description" content={userInfo?.description} />
+        <meta property="og:title" content={`${userInfo?.name} - Hirely.com`} />
+      </Helmet>
+
       {isLoading ? (
         <span
           className="loader-blue"

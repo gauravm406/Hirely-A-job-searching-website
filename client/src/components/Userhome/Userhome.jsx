@@ -4,6 +4,7 @@ import { SlCalender } from "react-icons/sl";
 import { IoHandRightOutline } from "react-icons/io5";
 import { useSelector } from "react-redux";
 import { Bar } from "react-chartjs-2";
+import { Helmet } from "react-helmet";
 
 const Userhome = () => {
   const [pendingApplications, setPendingApplications] = useState([]);
@@ -79,69 +80,87 @@ const Userhome = () => {
     setUserChartData(tempChartData);
   }, [userInfo]);
 
-  return (
-    !userInfo.isAdmin && (
-      <div className="home-main">
-        <section className="home-stats-container">
-          <div className="home-stats">
-            <div className="home-status-logo-container">
-              <MdPendingActions size={25} />
-            </div>
-            <div className="home-stats-desc">
-              <p>Pending Applications</p>
-            </div>
-            <h2>{pendingApplications?.length}</h2>
-          </div>
-          <div className="home-stats">
-            <div className="home-status-logo-container">
-              <SlCalender size={25} />
-            </div>
-            <div className="home-stats-desc">
-              <p>Approved Applications</p>
-            </div>
-            <h2>{approvedApplications?.length}</h2>
-          </div>
-          <div className="home-stats">
-            <div className="home-status-logo-container">
-              <IoHandRightOutline size={25} />
-            </div>
-            <div className="home-stats-desc">
-              <p>Declined Applications</p>
-            </div>
-            <h2>{declinedApplications?.length}</h2>
-          </div>
-        </section>
+  useEffect(() => {
+    // Simulate a delay of 2 seconds
+    const timeoutId = setTimeout(() => {
+      console.log("Userhome component loaded");
+    }, 10000);
 
-        {!userInfo?.isAdmin && userChartData && (
-          <section className="home-chart-container">
-            <div className="chart-container">
-              <Bar
-                data={userChartData}
-                options={{
-                  plugins: {
-                    title: {
-                      display: true,
-                      text: "Applications sent",
-                    },
-                    legend: {
-                      display: false,
-                    },
-                  },
-                  scales: {
-                    y: {
-                      grid: {
-                        display: false,
-                      },
-                      beginAtZero: true,
-                    },
-                  },
-                }}
-              />
+    return () => clearTimeout(timeoutId);
+  }, []);
+
+  return (
+    <>
+      {/* SEO CONFIGURATIONS */}
+      <Helmet>
+        <title>{`${userInfo?.name} - Hirely.com`}</title>
+        <meta name="description" content={userInfo?.description} />
+        <meta property="og:title" content={`${userInfo?.name} - Hirely.com`} />
+      </Helmet>
+
+      {!userInfo.isAdmin && (
+        <div className="home-main">
+          <section className="home-stats-container">
+            <div className="home-stats">
+              <div className="home-status-logo-container">
+                <MdPendingActions size={25} />
+              </div>
+              <div className="home-stats-desc">
+                <p>Pending Applications</p>
+              </div>
+              <h2>{pendingApplications?.length}</h2>
+            </div>
+            <div className="home-stats">
+              <div className="home-status-logo-container">
+                <SlCalender size={25} />
+              </div>
+              <div className="home-stats-desc">
+                <p>Approved Applications</p>
+              </div>
+              <h2>{approvedApplications?.length}</h2>
+            </div>
+            <div className="home-stats">
+              <div className="home-status-logo-container">
+                <IoHandRightOutline size={25} />
+              </div>
+              <div className="home-stats-desc">
+                <p>Declined Applications</p>
+              </div>
+              <h2>{declinedApplications?.length}</h2>
             </div>
           </section>
-        )}
-      </div>
-    )
+
+          {!userInfo?.isAdmin && userChartData && (
+            <section className="home-chart-container">
+              <div className="chart-container">
+                <Bar
+                  data={userChartData}
+                  options={{
+                    plugins: {
+                      title: {
+                        display: true,
+                        text: "Applications sent",
+                      },
+                      legend: {
+                        display: false,
+                      },
+                    },
+                    scales: {
+                      y: {
+                        grid: {
+                          display: false,
+                        },
+                        beginAtZero: true,
+                      },
+                    },
+                  }}
+                />
+              </div>
+            </section>
+          )}
+        </div>
+      )}
+    </>
   );
 };
 
