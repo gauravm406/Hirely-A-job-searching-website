@@ -156,12 +156,18 @@ const Alljobs = () => {
           type="text"
           placeholder="Search by job title"
           value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
+          onChange={(e) => {
+            setSearchQuery(e.target.value);
+            setCurrPage(1);
+          }}
         />
 
         <select
           value={selectedLocation}
-          onChange={(e) => setSelectedLocation(e.target.value)}
+          onChange={(e) => {
+            setSelectedLocation(e.target.value);
+            setCurrPage(1);
+          }}
         >
           {locations.map((loc, index) => (
             <option key={index} value={loc}>
@@ -172,7 +178,10 @@ const Alljobs = () => {
 
         <select
           value={selectedExperience}
-          onChange={(e) => setSelectedExperience(e.target.value)}
+          onChange={(e) => {
+            setSelectedExperience(e.target.value);
+            setCurrPage(1);
+          }}
         >
           <option value="any">any</option>
           {Array.from({ length: 10 }, (_, index) => index + 1).map(
