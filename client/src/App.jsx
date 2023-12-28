@@ -4,25 +4,32 @@ import "react-toastify/dist/ReactToastify.css";
 import { useSelector } from "react-redux";
 import Chart from "chart.js/auto";
 import { CategoryScale } from "chart.js";
+import { lazy, Suspense } from "react";
 
-import Welcome from "./pages/Welcome/Welcome.jsx";
-import Home from "./pages/Home/Home.jsx";
-import Register from "./pages/Register/Register.jsx";
-import Navbar from "./components/Navbar/Navbar.jsx";
-import Panel from "./components/Panel/Panel.jsx";
-import Alljobs from "./pages/AllJobs/Alljobs.jsx";
-import Profile from "./pages/Profile/Profile.jsx";
-import AddJobs from "./pages/Addjobs/AddJobs.jsx";
-import JobDetails from "./pages/JobDetails/JobDetails.jsx";
-import Applies from "./pages/Applies/Applies.jsx";
-import Bookmarks from "./pages/Bookmarks/Bookmarks.jsx";
-import Applications from "./pages/Applications/Applications.jsx";
-import ApplicantDetails from "./pages/ApplicantDetails/ApplicantDetails.jsx";
+const Welcome = lazy(() => import("./pages/Welcome/Welcome.jsx"));
+const Register = lazy(() => import("./pages/Register/Register.jsx"));
+const Home = lazy(() => import("./pages/Home/Home.jsx"));
+const Navbar = lazy(() => import("./components/Navbar/Navbar.jsx"));
+const Panel = lazy(() => import("./components/Panel/Panel.jsx"));
+const Alljobs = lazy(() => import("./pages/AllJobs/Alljobs.jsx"));
+const Profile = lazy(() => import("./pages/Profile/Profile.jsx"));
+const AddJobs = lazy(() => import("./pages/Addjobs/AddJobs.jsx"));
+const JobDetails = lazy(() => import("./pages/JobDetails/JobDetails.jsx"));
+const Applies = lazy(() => import("./pages/Applies/Applies.jsx"));
+const Bookmarks = lazy(() => import("./pages/Bookmarks/Bookmarks.jsx"));
+const Applications = lazy(() =>
+  import("./pages/Applications/Applications.jsx")
+);
+const ApplicantDetails = lazy(() =>
+  import("./pages/ApplicantDetails/ApplicantDetails.jsx")
+);
 
 import "./app.css";
 
+// chart
 Chart.register(CategoryScale);
 
+// default layout
 const DefaultLayout = ({ children, sidebar }) => (
   <div className="app-container">
     <div
@@ -34,7 +41,15 @@ const DefaultLayout = ({ children, sidebar }) => (
     </div>
     <div className="app-page">
       <Navbar />
-      {children}
+      <Suspense
+        fallback={
+          <div className="app-loader-container">
+            <span className="loader-blue"></span>
+          </div>
+        }
+      >
+        {children}
+      </Suspense>
     </div>
   </div>
 );
@@ -122,8 +137,36 @@ export default function App() {
             </DefaultLayout>
           }
         />
-        <Route path="/welcome" element={<Welcome />} />
-        <Route path="/register" element={<Register />} />
+
+        <Route
+          path="/welcome"
+          element={
+            <Suspense
+              fallback={
+                <div className="app-loader-container">
+                  <span className="loader-blue"></span>
+                </div>
+              }
+            >
+              <Welcome />
+            </Suspense>
+          }
+        />
+
+        <Route
+          path="/register"
+          element={
+            <Suspense
+              fallback={
+                <div className="app-loader-container">
+                  <span className="loader-blue"></span>
+                </div>
+              }
+            >
+              <Register />
+            </Suspense>
+          }
+        />
       </Routes>
       <ToastContainer />
     </BrowserRouter>
