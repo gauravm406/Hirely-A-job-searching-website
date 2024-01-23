@@ -1,6 +1,6 @@
 @import "../../index.css";
 
-.profile-main {
+.profile_main {
   background-color: rgb(238, 239, 243);
   padding: 0rem 2rem;
   height: calc(100vh - 4.5321rem);
@@ -8,22 +8,22 @@
   overflow: auto;
 }
 
-.profile-main::-webkit-scrollbar {
+.profile_main::-webkit-scrollbar {
   display: none;
 }
 
-.profile-main-heading {
+.profile_main_heading {
   font-size: 1.875rem;
   font-weight: 400;
 }
 
-.profile-main-btns-container {
+.profile_main_btns_container {
   display: flex;
   gap: 2rem;
   margin-top: 2.5rem;
 }
 
-.profile-main-btns-container button {
+.profile_main_btns_container button {
   font-size: 1.125rem;
   padding: 0.5rem 2rem;
   border: none;
@@ -33,37 +33,37 @@
   cursor: not-allowed;
 }
 
-.profile-head-desc-container {
+.profile_head_desc_container {
   margin-top: 2.5rem;
 }
 
-.profile-head-desc-container h4 {
+.profile_head_desc_container h4 {
   font-size: 1.5rem;
   font-weight: 400;
 }
 
-.profile-head-desc-container p {
+.profile_head_desc_container p {
   margin-top: 0.3rem;
   color: var(--primary-gray-color);
 }
 
-.profile-form {
+.profile_form {
   margin-top: 2rem;
 }
 
-.profile-form-upper {
+.profile_form_upper {
   display: grid;
   grid-template-columns: 45% 45%;
   justify-content: space-between;
   row-gap: 1rem;
 }
 
-.profile-form-upper div {
+.profile_form_upper div {
   display: flex;
   flex-direction: column;
 }
 
-.profile-form-upper div input {
+.profile_form_upper div input {
   margin-bottom: 1rem;
   padding: 1.2rem;
   font-weight: 400;
@@ -73,25 +73,25 @@
   transition: 0.3s ease;
 }
 
-.profile-form-upper div input:hover {
+.profile_form_upper div input:hover {
   border: 1px solid var(--primary-blue-color);
 }
 
-.profile-form-upper div input:focus {
+.profile_form_upper div input:focus {
   outline: 1px solid var(--primary-blue-color);
 }
 
-.profile-form-upper div label {
+.profile_form_upper div label {
   color: var(--primary-gray-color);
 }
 
-.profile-form-bio-container {
+.profile_form_bio_container {
   display: flex;
   flex-direction: column;
   margin-top: 1rem;
 }
 
-.profile-form-bio-container textarea {
+.profile_form_bio_container textarea {
   margin-bottom: 1rem;
   padding: 1.2rem;
   font-weight: 400;
@@ -103,25 +103,25 @@
   border: 1px solid var(--primary-blue-color);
 }
 
-.profile-form-bio-container textarea:hover {
+.profile_form_bio_container textarea:hover {
   border: 1px solid var(--primary-blue-color);
 }
 
-.profile-form-bio-container textarea:focus {
+.profile_form_bio_container textarea:focus {
   outline: 1px solid var(--primary-blue-color);
 }
 
-.profile-form-bio-container label {
+.profile_form_bio_container label {
   color: var(--primary-gray-color);
 }
 
-.profile-save-changes-btn-container {
+.profile_save_changes_btn_container {
   width: 100%;
   display: flex;
   justify-content: end;
 }
 
-.profile-save-changes-btn-container button {
+.profile_save_changes_btn_container button {
   margin: 2.5rem 0rem;
   font-size: 0.875rem;
   border: none;
@@ -134,16 +134,16 @@
   height: 3.1rem;
 }
 
-.profile-save-changes-btn-container button:hover {
+.profile_save_changes_btn_container button:hover {
   background-color: var(--secondary-blue-color);
 }
 
 @media only screen and (max-width: 480px) {
-  .profile-main-btns-container {
+  .profile_main_btns_container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
   }
-  .profile-main-btns-container button {
+  .profile_main_btns_container button {
     font-size: 1rem;
     padding: 0.5rem 1rem;
     border: none;

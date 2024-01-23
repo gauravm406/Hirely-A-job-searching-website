@@ -4,9 +4,9 @@ import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 import { MdOutlineKeyboardDoubleArrowLeft } from "react-icons/md";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
-import "./alljobs.css";
 import { toast } from "react-toastify";
 import JobCard from "../../components/JobCard/JobCard";
+import s from "./alljobs.module.css";
 
 const Alljobs = () => {
   const [jobsData, setJobsData] = useState();
@@ -63,8 +63,6 @@ const Alljobs = () => {
         { withCredentials: true }
       );
 
-      setIsJobsFetching(false);
-
       // store response in state
       if (response.status === 200) {
         setJobsData(response.data.jobs);
@@ -72,11 +70,9 @@ const Alljobs = () => {
         setTotalJobs(response.data.totalJobs);
       }
     } catch (error) {
+      toast.error(error.response.data.message || error.message);
+    } finally {
       setIsJobsFetching(false);
-      console.log(error);
-      toast.error(error.response.data.message || error.message, {
-        position: toast.POSITION.TOP_RIGHT,
-      });
     }
   };
 
@@ -93,7 +89,7 @@ const Alljobs = () => {
 
         setLocations(["any", ...uniqueLocations]);
       } catch (error) {
-        console.log(error);
+        toast.error(error.response.data.message || error.message);
       }
     })();
   }, []);
@@ -149,10 +145,10 @@ const Alljobs = () => {
   };
 
   return (
-    <div className="all-jobs-main all-jobs-main-override ">
-      <section className="all-jobs-filters-container">
+    <div className={`${s.all_jobs_main} ${s.all_jobs_main_override}`}>
+      <section className={s.all_jobs_filters_container}>
         <input
-          className="search-bar"
+          className={s.search_bar}
           type="text"
           placeholder="Search by job title"
           value={searchQuery}
@@ -176,6 +172,7 @@ const Alljobs = () => {
           ))}
         </select>
 
+        {/* Experience */}
         <select
           value={selectedExperience}
           onChange={(e) => {
@@ -196,17 +193,17 @@ const Alljobs = () => {
         <button onClick={handleClearFilters}>Clear filters</button>
       </section>
       {isJobsFetching ? (
-        <div className="all-jobs-loader-container">
+        <div className={s.all_jobs_loader_container}>
           <span className="loader-blue"></span>
         </div>
       ) : (
-        <div className="all-jobs">
-          <section className="job-length-sort-filter-container">
-            <div className="job-p-length-head">
+        <div className={s.all_jobs}>
+          <section className={s.job_length_sort_filter_container}>
+            <div className={s.job_p_length_head}>
               <p>{totalJobs} jobs found</p>
             </div>
 
-            <div className="job-sort-filter">
+            <div className={s.job_sort_filter}>
               <p>sort by</p>
               <select
                 value={sortByValue}
@@ -221,13 +218,13 @@ const Alljobs = () => {
             </div>
           </section>
 
-          <section className="jobs-grid">
+          <section className={s.jobs_grid}>
             {filteredJobs?.map((job, index) => (
               <JobCard key={index} job={job} />
             ))}
           </section>
 
-          <section className="job-pagination-container">
+          <section className={s.job_pagination_container}>
             <button onClick={() => setCurrPage(1)}>
               <MdOutlineKeyboardDoubleArrowLeft />
             </button>
@@ -251,8 +248,8 @@ const Alljobs = () => {
                       key={pageNum}
                       className={
                         pageNum === currPage
-                          ? "active-page-btn"
-                          : "inactive-page-btn"
+                          ? s.active_page_btn
+                          : s.inactive_page_btn
                       }
                       onClick={() => setCurrPage(pageNum)}
                     >

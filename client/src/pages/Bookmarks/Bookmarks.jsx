@@ -1,4 +1,3 @@
-import "./bookmarks.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
@@ -8,6 +7,7 @@ import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { useSelector } from "react-redux";
 import JobCard from "../../components/JobCard/JobCard";
 import { toast } from "react-toastify";
+import s from "./bookmarks.module.css";
 
 const Bookmarks = () => {
   const [jobsData, setJobsData] = useState();
@@ -29,18 +29,14 @@ const Bookmarks = () => {
           { withCredentials: true }
         );
 
-        setIsJobsFetching(false);
-
         // store respone in state
         if (response.status == 200) {
           setJobsData(response.data.jobs);
         }
       } catch (error) {
+        toast.error(error.response.data.message || error.message);
+      } finally {
         setIsJobsFetching(false);
-        console.log(error);
-        toast.error(error.response.data.message || error.message, {
-          position: toast.POSITION.TOP_RIGHT,
-        });
       }
     };
 
@@ -53,12 +49,12 @@ const Bookmarks = () => {
   let firstIndex = lastIndex - itemsPerPage;
 
   return (
-    <div className="all-jobs-main">
+    <div className={s.all_jobs_main}>
       {isJobsFetching ? (
         <span className="loader-blue"></span>
       ) : (
-        <div className="all-jobs">
-          <section className="jobs-grid">
+        <div className={s.all_jobs}>
+          <section className={s.jobs_grid}>
             {jobsData?.map(
               (job, index) =>
                 index >= firstIndex &&
@@ -66,7 +62,7 @@ const Bookmarks = () => {
             )}
           </section>
 
-          <section className="job-pagination-container">
+          <section className={s.job_pagination_container}>
             <button onClick={() => setCurrPage(1)}>
               <MdOutlineKeyboardDoubleArrowLeft />
             </button>
@@ -90,8 +86,8 @@ const Bookmarks = () => {
                       key={pageNum}
                       className={
                         pageNum === currPage
-                          ? "active-page-btn"
-                          : "inactive-page-btn"
+                          ? s.active_page_btn
+                          : s.inactive_page_btn
                       }
                       onClick={() => setCurrPage(pageNum)}
                     >

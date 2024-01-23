@@ -1,24 +1,24 @@
 @import "../../index.css";
 
-.welcome-main {
+.welcome_main {
   height: 100vh;
   width: 100vw;
   padding: 0rem 4rem;
 }
 
-.welcome-nav {
+.welcome_nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 6rem;
 }
 
-.welcome-nav h3 {
+.welcome_nav h3 {
   font-weight: 700;
   font-size: 1.875rem;
 }
 
-.welcome-button {
+.welcome_button {
   background-color: var(--primary-blue-color);
   font-size: 0.875rem;
   padding: var(--primary-btn-padding);
@@ -30,33 +30,33 @@
   cursor: pointer;
 }
 
-.welcome-button:hover {
+.welcome_button:hover {
   background-color: var(--secondary-blue-color);
 }
 
-.welcome-content-container {
+.welcome_content_container {
   height: calc(100vh - 6rem);
   display: flex;
   align-items: center;
   gap: 3rem;
 }
 
-.welcome-heading-description-container {
+.welcome_heading_description_container {
   width: calc(50% - 1.5rem);
 }
 
-.welcome-img-container {
+.welcome_img_container {
   width: calc(50% - 1.5rem);
 }
 
-.welcome-heading-description-container h1 {
+.welcome_heading_description_container h1 {
   font-size: 3rem;
   line-height: 1;
   font-weight: 700;
   margin-bottom: 1rem;
 }
 
-.welcome-heading-description-container p {
+.welcome_heading_description_container p {
   font-size: 1.25rem;
   line-height: 1.75rem;
   margin-bottom: 2rem;
@@ -64,35 +64,35 @@
   color: var(--primary-gray-color);
 }
 
-.welcome-img-container img {
+.welcome_img_container img {
   height: 28rem;
   margin-left: 10rem;
 }
 
 @media only screen and (max-width: 1024px) {
-  .welcome-img-container img {
+  .welcome_img_container img {
     height: 28rem;
     margin-left: 10rem;
   }
 }
 
 @media only screen and (max-width: 820px) {
-  .welcome-img-container img {
+  .welcome_img_container img {
     height: 28rem;
     margin-left: 1rem;
   }
 }
 
 @media only screen and (max-width: 480px) {
-  .welcome-main {
+  .welcome_main {
     padding: 0rem 1rem;
   }
 
-  .welcome-heading-description-container {
+  .welcome_heading_description_container {
     width: 100%;
   }
 
-  .welcome-img-container {
+  .welcome_img_container {
     display: none;
   }
 }

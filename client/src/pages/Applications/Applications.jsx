@@ -6,6 +6,7 @@ import { FaStar } from "react-icons/fa";
 import { CiLocationArrow1 } from "react-icons/ci";
 import { addApplication } from "../../store/slices/applications.js";
 import { useNavigate } from "react-router-dom";
+import s from "./applications.module.css";
 
 const Applications = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -31,13 +32,13 @@ const Applications = () => {
           { withCredentials: true }
         );
 
-        setIsLoading(false);
         if (response?.status === 200) {
           dispatch(addApplication(response.data));
         }
       } catch (error) {
+        toast.error(error.response.data.message || error.message);
+      } finally {
         setIsLoading(false);
-        console.log(error);
       }
     };
 
@@ -45,15 +46,15 @@ const Applications = () => {
   }, []);
 
   return (
-    <div className="all-jobs-main">
+    <div className={s.all_jobs_main}>
       {isLoading ? (
         <span className="loader-blue"></span>
       ) : (
-        <div className="all-jobs">
-          <section className="jobs-grid">
+        <div className={s.all_jobs}>
+          <section className={s.jobs_grid}>
             {applicationsData?.map((job, index) => (
               <div
-                className="job-card"
+                className={s.job_card}
                 key={index}
                 onClick={() =>
                   navigate(
@@ -61,12 +62,12 @@ const Applications = () => {
                   )
                 }
               >
-                <div className="job-title-image-container">
-                  <div className="job-title-container">
+                <div className={s.job_title_image_container}>
+                  <div className={s.job_title_container}>
                     <h4>{job.jobTitle}</h4>
                     <p>{job.companyName}</p>
                   </div>
-                  <div className="job-image-container">
+                  <div className={s.job_image_container}>
                     <img
                       src={`${import.meta.env.VITE_REACT_APP_HOST}/${
                         job.image
@@ -75,11 +76,11 @@ const Applications = () => {
                     />
                   </div>
                 </div>
-                <p className="rating-and-reviews">
+                <p className={s.rating_and_reviews}>
                   <FaStar style={{ color: "gold" }} /> {job.rating} |{" "}
                   {job.reviews} reviews
                 </p>
-                <div className="job-location-experience-container">
+                <div className={s.job_location_experience_container}>
                   <span>
                     <CiLocationArrow1 />
                     {job.location.map((location, index) => (
@@ -91,15 +92,14 @@ const Applications = () => {
                     <p>{job.experience} years</p>
                   </span>
                 </div>
-
                 <div>
-                  <p className="rating-and-reviews">
+                  <p className={s.rating_and_reviews}>
                     Status:{" "}
                     <span
                       style={
-                        job.status == "pending"
+                        job.status === "pending"
                           ? { color: "rgb(29, 78, 216)" }
-                          : job.status == "approved"
+                          : job.status === "approved"
                           ? { color: "green" }
                           : { color: "red" }
                       }

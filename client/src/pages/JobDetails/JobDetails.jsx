@@ -5,9 +5,8 @@ import { FaStar } from "react-icons/fa";
 import { CiLocationArrow1 } from "react-icons/ci";
 import { FaRegBookmark } from "react-icons/fa6";
 import { FaBookmark } from "react-icons/fa6";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./jobdetails.css";
+import s from "./jobdetails.module.css";
 
 const JobDetails = () => {
   const [jobData, setJobData] = useState();
@@ -15,8 +14,6 @@ const JobDetails = () => {
   const [isBookmarked, setIsBookmarked] = useState(false);
 
   const { id } = useParams();
-
-  const navigate = useNavigate();
 
   const handleBookmark = () => {
     setIsBookmarked(!isBookmarked);
@@ -39,9 +36,7 @@ const JobDetails = () => {
         }
       } catch (error) {
         setIsJobFetching(false);
-        toast.error(error.response.data || error.message, {
-          position: toast.POSITION.TOP_RIGHT,
-        });
+        toast.error(error.response.data.message || error.message);
       }
     };
 
@@ -49,20 +44,19 @@ const JobDetails = () => {
   }, []);
 
   return (
-    <div className="job-details-main">
+    <div className={s.job_details_main}>
       {isJobFetching ? (
-        <span className="loader-blue"></span>
+        <span className={s.loader_blue}></span>
       ) : (
         jobData && (
-          <section className="job-details">
-            <section className="job-details-main-card">
-              {" "}
-              <div className="job-title-image-container">
-                <div className="job-title-container">
+          <section className={s.job_details}>
+            <section className={s.job_details_main_card}>
+              <div className={s.job_title_image_container}>
+                <div className={s.job_title_container}>
                   <h4>{jobData.jobTitle}</h4>
                   <p>{jobData.companyName}</p>
                 </div>
-                <div className="job-image-container">
+                <div className={s.job_image_container}>
                   <img
                     src={`${import.meta.env.VITE_REACT_APP_HOST}/${
                       jobData.image
@@ -71,11 +65,11 @@ const JobDetails = () => {
                   />
                 </div>
               </div>
-              <p className="rating-and-reviews">
+              <p className={s.rating_and_reviews}>
                 <FaStar style={{ color: "gold" }} /> {jobData.rating} |{" "}
                 {jobData.reviews} reviews
               </p>
-              <div className="job-location-experience-container">
+              <div className={s.job_location_experience_container}>
                 <span>
                   <CiLocationArrow1 />
                   {jobData.location.map((location, index) => (
@@ -87,9 +81,9 @@ const JobDetails = () => {
                   <p>{jobData.experience} years</p>
                 </span>
               </div>
-              <hr className="job-deatils-hr-line" />
-              <div className="job-buttons-container">
-                <button className="save" onClick={handleBookmark}>
+              <hr className={s.job_deatils_hr_line} />
+              <div className={s.job_buttons_container}>
+                <button className={s.save} onClick={handleBookmark}>
                   {isBookmarked ? (
                     <FaBookmark
                       size={18}
@@ -99,13 +93,12 @@ const JobDetails = () => {
                     <FaRegBookmark size={18} />
                   )}
                 </button>
-                <button className="apply">APPLY</button>
+                <button className={s.apply}>APPLY</button>
               </div>
             </section>
-            <section className="job-details-description-card">
+            <section className={s.job_details_description_card}>
               <h4>Description</h4>
-              <hr className="job-deatils-hr-line" />
-
+              <hr className={s.job_deatils_hr_line} />
               <p>{jobData?.description}</p>
             </section>
           </section>

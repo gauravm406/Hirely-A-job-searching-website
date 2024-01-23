@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addUser } from "../../store/slices/user.js";
 import axios from "axios";
-import "./register.css";
+import s from "./register.module.css";
 
 const Register = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -26,36 +26,28 @@ const Register = () => {
     setIsLoading(true);
 
     if (name.length < 3) {
-      toast.error("Name should have atleast 3 charcters!", {
-        position: toast.POSITION.TOP_RIGHT,
-      });
+      toast.error("Name should have atleast 3 charcters!");
 
       setIsLoading(false);
       return;
     }
 
     if (email.length < 3) {
-      toast.error("Email should have atleast 3 charcters!", {
-        position: toast.POSITION.TOP_RIGHT,
-      });
+      toast.error("Email should have atleast 3 charcters!");
 
       setIsLoading(false);
       return;
     }
 
     if (password.length < 3) {
-      toast.error("Password should have atleast 3 charcters!", {
-        position: toast.POSITION.TOP_RIGHT,
-      });
+      toast.error("Password should have atleast 3 charcters!");
 
       setIsLoading(false);
       return;
     }
 
     if (name === "" || email === "" || password === "") {
-      toast.error("Fill all the detials !", {
-        position: toast.POSITION.TOP_RIGHT,
-      });
+      toast.error("Fill all the detials !");
 
       setIsLoading(false);
       return;
@@ -80,17 +72,13 @@ const Register = () => {
           // home
           navigate("/");
 
-          toast.success("Registered successfully!", {
-            position: toast.POSITION.TOP_RIGHT,
-          });
+          toast.success("Registered successfully!");
         }
 
         setIsLoading(false);
       } catch (error) {
         setIsLoading(false);
-        toast.error(error.response.data || error.message, {
-          position: toast.POSITION.TOP_RIGHT,
-        });
+        toast.error(error.response.data.message || error.message);
       }
     }
   };
@@ -103,27 +91,21 @@ const Register = () => {
     setIsLoading(true);
 
     if (email.length < 3) {
-      toast.error("Email should have atleast 3 charcters!", {
-        position: toast.POSITION.TOP_RIGHT,
-      });
+      toast.error("Email should have atleast 3 charcters!");
 
       setIsLoading(false);
       return;
     }
 
     if (password.length < 3) {
-      toast.error("Password should have atleast 3 charcters!", {
-        position: toast.POSITION.TOP_RIGHT,
-      });
+      toast.error("Password should have atleast 3 charcters!");
 
       setIsLoading(false);
       return;
     }
 
     if (email === "" || password === "") {
-      toast.error("Fill all the detials !", {
-        position: toast.POSITION.TOP_RIGHT,
-      });
+      toast.error("Fill all the detials !");
 
       setIsLoading(false);
       return;
@@ -146,18 +128,12 @@ const Register = () => {
 
           // navigate to home
           navigate("/");
-
-          toast.success("Logged in successfully!", {
-            position: toast.POSITION.TOP_RIGHT,
-          });
         }
-
-        setIsLoading(false);
       } catch (error) {
         setIsLoading(false);
-        toast.error(error.response.data || error.message, {
-          position: toast.POSITION.TOP_RIGHT,
-        });
+        toast.error(error.response.data.message || error.message);
+      } finally {
+        setIsLoading(false);
       }
     }
   };
@@ -173,17 +149,16 @@ const Register = () => {
   };
 
   return (
-    <div className="register-main">
+    <div className={s.register_main}>
       {/* aside */}
-
-      <aside className="register-aside-container">
-        <h2 className="register-aside-brandname">HIRELY.</h2>
-        <h2 className="register-aside-slogan">Start your journey with us.</h2>
-        <p className="register-aside-description">
+      <aside className={s.register_aside_container}>
+        <h2 className={s.register_aside_brandname}>HIRELY.</h2>
+        <h2 className={s.register_aside_slogan}>Start your journey with us.</h2>
+        <p className={s.register_aside_description}>
           Track your job search progress with Indago - Never miss an update on
           your job application status.
         </p>
-        <div className="register-aside-review-container">
+        <div className={s.register_aside_review_container}>
           <p>
             Indago is a great web app for job seekers. It helps to keep track of
             job applications and their statuses. Highly recommended for anyone
@@ -196,15 +171,14 @@ const Register = () => {
         </div>
       </aside>
 
-      {/* register from  */}
-      <section className="register-form-container">
-        <h2 className="register-form-container-heading">Hello Again!</h2>
+      {/* register form */}
+      <section className={s.register_form_container}>
+        <h2 className={s.register_form_container_heading}>Hello Again!</h2>
 
         {isLogin ? (
           // login form
-
-          <form className="register-login-form" onSubmit={handleLoginUser}>
-            <label htmlFor="email" className="label_style">
+          <form className={s.register_login_form} onSubmit={handleLoginUser}>
+            <label htmlFor="email" className={s.label_style}>
               Email
             </label>
             <input
@@ -212,11 +186,11 @@ const Register = () => {
               placeholder="Enter your email"
               type="text"
               name="email"
-              className="input_style"
+              className={s.input_style}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             ></input>
-            <label htmlFor="password" className="label_style">
+            <label htmlFor="password" className={s.label_style}>
               Password
             </label>
             <input
@@ -224,26 +198,31 @@ const Register = () => {
               placeholder="Enter your password"
               type="password"
               name="password"
-              className="input_style"
+              className={s.input_style}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             ></input>
             <button type="submit">
               {" "}
-              {isLoading ? <span className="loader"></span> : "LOGIN"}
+              {isLoading ? <span className={s.loader}></span> : "LOGIN"}
             </button>
-            <span className="register-demo-user" onClick={handleDemoUserLogin}>
+            <span
+              className={s.register_demo_user}
+              onClick={handleDemoUserLogin}
+            >
               Demo user <FaLongArrowAltRight />
             </span>
-            <span className="register-demo-user" onClick={handleAdminLogin}>
+            <span className={s.register_demo_user} onClick={handleAdminLogin}>
               Admin user <FaLongArrowAltRight />
             </span>
           </form>
         ) : (
           //  register form
-
-          <form className="register-signup-form" onSubmit={handleRegisterUser}>
-            <label htmlFor="name" className="label_style">
+          <form
+            className={s.register_signup_form}
+            onSubmit={handleRegisterUser}
+          >
+            <label htmlFor="name" className={s.label_style}>
               Name
             </label>
             <input
@@ -251,11 +230,11 @@ const Register = () => {
               placeholder="Enter your name"
               type="text"
               name="name"
-              className="input_style"
+              className={s.input_style}
               value={name}
               onChange={(e) => setName(e.target.value)}
             ></input>
-            <label htmlFor="email" className="label_style">
+            <label htmlFor="email" className={s.label_style}>
               Email
             </label>
             <input
@@ -263,11 +242,11 @@ const Register = () => {
               placeholder="Enter your email"
               type="text"
               name="email"
-              className="input_style"
+              className={s.input_style}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             ></input>
-            <label htmlFor="password" className="label_style">
+            <label htmlFor="password" className={s.label_style}>
               Password
             </label>
             <input
@@ -275,18 +254,18 @@ const Register = () => {
               placeholder="Enter your password"
               type="password"
               name="password"
-              className="input_style"
+              className={s.input_style}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             ></input>
             <button type="submit">
-              {isLoading ? <span className="loader"></span> : "REGISTER"}
+              {isLoading ? <span className={s.loader}></span> : "REGISTER"}
             </button>
           </form>
         )}
 
         {isLogin ? (
-          <p className="register-question">
+          <p className={s.register_question}>
             New user?{" "}
             <span
               onClick={() => {
@@ -300,7 +279,7 @@ const Register = () => {
             </span>
           </p>
         ) : (
-          <p className="register-question">
+          <p className={s.register_question}>
             Already a user?{" "}
             <span
               onClick={() => {

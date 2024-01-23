@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, Zoom } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useSelector } from "react-redux";
 import Chart from "chart.js/auto";
@@ -168,7 +168,15 @@ export default function App() {
           }
         />
       </Routes>
-      <ToastContainer />
+      <ToastContainer
+        toastClassName="custom-toast"
+        bodyClassName="custom-toast-body"
+        position="top-center"
+        transition={Zoom}
+        autoClose={1500}
+        closeButton={false}
+        hideProgressBar={true}
+      />
     </BrowserRouter>
   );
 }

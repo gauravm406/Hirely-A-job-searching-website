@@ -7,6 +7,7 @@ import { Bar } from "react-chartjs-2";
 import { addApplication } from "../../store/slices/applications.js";
 import axios from "axios";
 import { Helmet } from "react-helmet";
+import s from "./adminhome.module.css";
 
 const AdminHome = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -37,13 +38,13 @@ const AdminHome = () => {
           { withCredentials: true }
         );
 
-        setIsLoading(false);
         if (response?.status === 200) {
           dispatch(addApplication(response.data));
         }
       } catch (error) {
+        toast.error(error.response.data.message || error.message);
+      } finally {
         setIsLoading(false);
-        console.log(error);
       }
     };
 
@@ -143,7 +144,7 @@ const AdminHome = () => {
   }, [applicationsData]);
 
   return (
-    <div className="home-main">
+    <div className={s.home_main}>
       {/* SEO CONFIGURATIONS */}
       <Helmet>
         <title>{`${userInfo?.name} - Hirely.com`}</title>
@@ -158,30 +159,30 @@ const AdminHome = () => {
         ></span>
       ) : (
         <>
-          <section className="home-stats-container">
-            <div className="home-stats">
-              <div className="home-status-logo-container">
+          <section className={s.home_stats_container}>
+            <div className={s.home_stats}>
+              <div className={s.home_status_logo_container}>
                 <MdPendingActions size={25} />
               </div>
-              <div className="home-stats-desc">
+              <div className={s.home_stats_desc}>
                 <p>Pending Applications</p>
               </div>
               <h2>{pendingApplications?.length}</h2>
             </div>
-            <div className="home-stats">
-              <div className="home-status-logo-container">
+            <div className={s.home_stats}>
+              <div className={s.home_status_logo_container}>
                 <SlCalender size={25} />
               </div>
-              <div className="home-stats-desc">
+              <div className={s.home_stats_desc}>
                 <p>Approved Applications</p>
               </div>
               <h2>{approvedApplications?.length}</h2>
             </div>
-            <div className="home-stats">
-              <div className="home-status-logo-container">
+            <div className={s.home_stats}>
+              <div className={s.home_status_logo_container}>
                 <IoHandRightOutline size={25} />
               </div>
-              <div className="home-stats-desc">
+              <div className={s.home_stats_desc}>
                 <p>Declined Applications</p>
               </div>
               <h2>{declinedApplications?.length}</h2>
@@ -189,15 +190,15 @@ const AdminHome = () => {
           </section>
 
           {userInfo?.isAdmin && adminChartData && (
-            <section className="home-chart-container">
-              <div className="chart-container">
+            <section className={s.home_chart_container}>
+              <div className={s.chart_container}>
                 <Bar
                   data={adminChartData}
                   options={{
                     plugins: {
                       title: {
                         display: true,
-                        text: "Applications recieved",
+                        text: "Applications received",
                       },
                       legend: {
                         display: false,

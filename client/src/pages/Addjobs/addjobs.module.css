@@ -1,0 +1,209 @@
+@import "../../index.css";
+
+.add_jobs_main {
+  background-color: rgb(238, 239, 243);
+  padding: 0rem 2rem;
+  height: calc(100vh - 4.5321rem);
+  padding-top: 2rem;
+  overflow: auto;
+}
+
+.add_jobs_main::-webkit-scrollbar {
+  display: none;
+}
+
+.add_job_form {
+  display: grid;
+  grid-template-columns: 45% 45%;
+  justify-content: space-between;
+  row-gap: 1rem;
+}
+
+.add_job_form div {
+  display: flex;
+  flex-direction: column;
+}
+
+.add_job_form div input {
+  margin-bottom: 1rem;
+  padding: 1.2rem;
+  font-weight: 400;
+  margin-top: 6px;
+  border-radius: 0.375rem;
+  border: 1px solid var(--primary-gray-color);
+  transition: 0.3s ease;
+}
+
+.add_job_form div input:hover {
+  border: 1px solid var(--primary-blue-color);
+}
+
+.add_job_form div input:focus {
+  outline: 1px solid var(--primary-blue-color);
+}
+
+.add_job_form div label {
+  color: var(--primary-gray-color);
+}
+
+@media only screen and (max-width: 480px) {
+  .add_job_form {
+    grid-template-columns: 100%;
+  }
+}
+
+/* profile css */
+.profile_main {
+  background-color: rgb(238, 239, 243);
+  padding: 0rem 2rem;
+  height: calc(100vh - 4.5321rem);
+  padding-top: 2rem;
+  overflow: auto;
+}
+
+.profile_main::-webkit-scrollbar {
+  display: none;
+}
+
+.profile_main_heading {
+  font-size: 1.875rem;
+  font-weight: 400;
+}
+
+.profile_main_btns_container {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+.profile_main_btns_container button {
+  font-size: 1.125rem;
+  padding: 0.5rem 2rem;
+  border: none;
+  background-color: rgb(229 231 235);
+  letter-spacing: 0.8px;
+  text-transform: capitalize;
+  cursor: not-allowed;
+}
+
+.profile_head_desc_container {
+  margin-top: 2.5rem;
+}
+
+.profile_head_desc_container h4 {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.profile_head_desc_container p {
+  margin-top: 0.3rem;
+  color: var(--primary-gray-color);
+}
+
+.profile_form {
+  margin-top: 2rem;
+}
+
+.profile_form_upper {
+  display: grid;
+  grid-template-columns: 45% 45%;
+  justify-content: space-between;
+  row-gap: 1rem;
+}
+
+.profile_form_upper div {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile_form_upper div input {
+  margin-bottom: 1rem;
+  padding: 1.2rem;
+  font-weight: 400;
+  margin-top: 6px;
+  border-radius: 0.375rem;
+  border: 1px solid var(--primary-gray-color);
+  transition: 0.3s ease;
+}
+
+.profile_form_upper div input:hover {
+  border: 1px solid var(--primary-blue-color);
+}
+
+.profile_form_upper div input:focus {
+  outline: 1px solid var(--primary-blue-color);
+}
+
+.profile_form_upper div label {
+  color: var(--primary-gray-color);
+}
+
+.profile_form_bio_container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.profile_form_bio_container textarea {
+  margin-bottom: 1rem;
+  padding: 1.2rem;
+  font-weight: 400;
+  margin-top: 6px;
+  border-radius: 0.375rem;
+  border: 1px solid var(--primary-gray-color);
+  transition: 0.3s ease;
+  height: 7rem;
+  border: 1px solid var(--primary-blue-color);
+}
+
+.profile_form_bio_container textarea:hover {
+  border: 1px solid var(--primary-blue-color);
+}
+
+.profile_form_bio_container textarea:focus {
+  outline: 1px solid var(--primary-blue-color);
+}
+
+.profile_form_bio_container label {
+  color: var(--primary-gray-color);
+}
+
+.profile_save_changes_btn_container {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+
+.profile_save_changes_btn_container button {
+  margin: 2.5rem 0rem;
+  font-size: 0.875rem;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  letter-spacing: 0.8px;
+  color: white;
+  background-color: var(--primary-blue-color);
+  width: 8.34rem;
+  height: 3.1rem;
+}
+
+.profile_save_changes_btn_container button:hover {
+  background-color: var(--secondary-blue-color);
+}
+
+@media only screen and (max-width: 480px) {
+  .profile_main_btns_container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .profile_main_btns_container button {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: rgb(229 231 235);
+    letter-spacing: 0.8px;
+    text-transform: capitalize;
+    cursor: not-allowed;
+    height: 3.3rem;
+  }
+}

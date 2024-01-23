@@ -1,6 +1,6 @@
 @import "../../index.css";
 
-.all-jobs-main {
+.all_jobs_main {
   background-color: rgb(238, 239, 243);
   padding: 0rem 1rem;
   height: calc(100vh - 4.5321rem);
@@ -11,15 +11,15 @@
   overflow: auto;
 }
 
-.all-jobs-main-override {
+.all_jobs_main_override {
   display: block !important;
 }
 
-.all-jobs-main::-webkit-scrollbar {
+.all_jobs_main::-webkit-scrollbar {
   display: none;
 }
 
-.all-jobs-filters-container {
+.all_jobs_filters_container {
   background-color: white;
   padding: 0.75rem 1.25rem;
   border-radius: 6px;
@@ -32,8 +32,8 @@
   margin-bottom: 2rem;
 }
 
-.all-jobs-filters-container .search-bar,
-.all-jobs-filters-container select {
+.all_jobs_filters_container .search_bar,
+.all_jobs_filters_container select {
   border: none;
   outline: none;
   height: 2.5rem;
@@ -41,30 +41,30 @@
   letter-spacing: 0.8px;
 }
 
-.all-jobs-filters-container select {
+.all_jobs_filters_container select {
   text-transform: capitalize;
   letter-spacing: 0.8px;
 }
 
-.all-jobs-filters-container button {
+.all_jobs_filters_container button {
   border: none;
   border-radius: 6px;
   letter-spacing: 0.8px;
 }
 
-.all-jobs {
+.all_jobs {
   height: 100%;
   width: 100%;
 }
 
-.all-jobs-loader-container {
+.all_jobs_loader_container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: calc(100% - 3.9986rem - 2rem);
 }
 
-.job-length-sort-filter-container {
+.job_length_sort_filter_container {
   display: flex;
   justify-content: space-between;
   margin-bottom: 2rem;
@@ -72,69 +72,69 @@
   font-size: 0.8rem;
 }
 
-.job-length-sort-filter-container select {
+.job_length_sort_filter_container select {
   border: none;
   background-color: transparent;
   outline: none;
   letter-spacing: 0.8px;
 }
 
-.job-sort-filter {
+.job_sort_filter {
   display: flex;
   gap: 0.3rem;
 }
 
-.jobs-grid {
+.jobs_grid {
   display: grid;
   grid-template-columns: 45% 45%;
   row-gap: 2rem;
   justify-content: space-around;
 }
 
-.job-card {
+.job_card {
   background-color: white;
   padding: 1rem;
   border-radius: 10px;
   cursor: pointer;
 }
 
-.job-title-container {
+.job_title_container {
   width: calc(100% - 4.5rem);
 }
 
-.job-title-container h4 {
+.job_title_container h4 {
   font-weight: 600;
   text-transform: capitalize;
 }
 
-.job-title-container p {
+.job_title_container p {
   color: var(--primary-gray-color);
   font-weight: 400;
   font-size: 0.9rem;
 }
 
-.rating-and-reviews {
+.rating_and_reviews {
   font-size: 0.8rem !important;
   color: var(--primary-gray-color);
   font-weight: 400;
   margin-top: 0.3rem;
 }
 
-.job-title-image-container {
+.job_title_image_container {
   display: flex;
   justify-content: space-between;
 }
 
-.job-image-container {
+.job_image_container {
   height: 3.5rem;
   width: 3.5rem;
 }
 
-.job-image-container img {
+.job_image_container img {
   width: 100%;
 }
 
-.job-location-experience-container {
+.job_location_experience_container {
   color: var(--primary-gray-color);
   font-weight: 400;
   font-size: 0.8rem;
@@ -143,30 +143,30 @@
   margin-top: 0.3rem;
 }
 
-.job-location-experience-container span {
+.job_location_experience_container span {
   display: flex;
   gap: 0.2rem;
   align-items: center;
 }
 
-.job-location-experience-container span p {
+.job_location_experience_container span p {
   text-transform: capitalize;
 }
 
-.job-buttons-container {
+.job_buttons_container {
   margin-top: 1rem;
   display: flex;
   justify-content: space-between;
 }
 
-.job-buttons-container .save {
+.job_buttons_container .save {
   border: none;
   background-color: white;
   color: var(--primary-gray-color);
   cursor: pointer;
 }
 
-.job-buttons-container .apply {
+.job_buttons_container .apply {
   border: none;
   background-color: var(--primary-blue-color);
   color: white;
@@ -183,16 +183,16 @@
   letter-spacing: 0.8px;
 }
 
-.job-buttons-container .disabled:hover {
+.job_buttons_container .disabled:hover {
   background-color: rgb(117, 142, 210) !important;
 }
 
-.job-buttons-container .disabled {
+.job_buttons_container .disabled {
   background-color: rgb(117, 142, 210) !important;
   cursor: not-allowed;
 }
 
-.job-pagination-container {
+.job_pagination_container {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -200,7 +200,7 @@
   gap: 1rem;
 }
 
-.job-pagination-container button {
+.job_pagination_container button {
   background-color: white;
   height: 2rem;
   width: 2rem;
@@ -212,13 +212,13 @@
   cursor: pointer;
 }
 
-.active-page-btn {
+.active_page_btn {
   color: white;
   background-color: var(--primary-blue-color) !important;
 }
 
 @media only screen and (max-width: 480px) {
-  .jobs-grid {
+  .jobs_grid {
     grid-template-columns: 100%;
   }
 }

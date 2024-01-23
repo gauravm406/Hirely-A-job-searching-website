@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { addUser } from "../../store/slices/user.js";
 import axios from "axios";
-import "./profile.css";
+import s from "./profile.module.css";
 
 const Profile = () => {
   const userInfo = useSelector((state) => state.user.userInfo);
@@ -32,9 +32,7 @@ const Profile = () => {
       bio.length <= 0 ||
       location.length <= 0
     ) {
-      toast.error("Fields can not be empty", {
-        position: toast.POSITION.TOP_RIGHT,
-      });
+      toast.error("Fields can not be empty");
 
       setIsLoading(false);
       return;
@@ -51,41 +49,37 @@ const Profile = () => {
 
         if (response?.status == 200) {
           // success message
-          toast.success(response.data.message, {
-            position: toast.POSITION.TOP_RIGHT,
-          });
+          toast.success(response.data.message);
 
           // dispacth to store
           dispatch(addUser(response.data.updatedUser));
         }
       } catch (error) {
         setIsLoading(false);
-        toast.error(error.response.data || error.message, {
-          position: toast.POSITION.TOP_RIGHT,
-        });
+        toast.error(error.response.data.message || error.message);
       }
     }
   };
 
   return (
-    <div className="profile-main">
-      <h3 className="profile-main-heading">Account Settings </h3>
+    <div className={s.profile_main}>
+      <h3 className={s.profile_main_heading}>Account Settings</h3>
 
-      <section className="profile-main-btns-container">
+      <section className={s.profile_main_btns_container}>
         <button disabled>my details</button>
         <button disabled>profile</button>
         <button disabled>password</button>
       </section>
 
-      <section className="profile-head-desc-container">
+      <section className={s.profile_head_desc_container}>
         <h4>Profile</h4>
         <p>Update your phone and personal details here</p>
       </section>
 
-      <form className="profile-form" onSubmit={handleUpdateUser}>
-        <div className="profile-form-upper">
+      <form className={s.profile_form} onSubmit={handleUpdateUser}>
+        <div className={s.profile_form_upper}>
           <div>
-            <label htmlFor="firstname" className="label_style">
+            <label htmlFor="firstname" className={s.label_style}>
               First Name
             </label>
             <input
@@ -98,50 +92,50 @@ const Profile = () => {
           </div>
 
           <div>
-            <label htmlFor="lastname" className="label_style">
+            <label htmlFor="lastname" className={s.label_style}>
               Last Name
             </label>
             <input
               id="lastname"
               type="text"
               name="lastname"
-              className="input_style"
+              className={s.input_style}
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
             ></input>
           </div>
 
           <div>
-            <label htmlFor="email" className="label_style">
+            <label htmlFor="email" className={s.label_style}>
               Email
             </label>
             <input
               id="email"
               type="text"
               name="email"
-              className="input_style"
+              className={s.input_style}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             ></input>
           </div>
 
           <div>
-            <label htmlFor="location" className="label_style">
+            <label htmlFor="location" className={s.label_style}>
               Location
             </label>
             <input
               id="location"
               type="text"
               name="location"
-              className="input_style"
+              className={s.input_style}
               value={location}
               onChange={(e) => setLocation(e.target.value)}
             ></input>
           </div>
         </div>
 
-        <div className="profile-form-bio-container">
-          <label htmlFor="bio" className="label_style">
+        <div className={s.profile_form_bio_container}>
+          <label htmlFor="bio" className={s.label_style}>
             Bio
           </label>
           <textarea
@@ -152,15 +146,15 @@ const Profile = () => {
             rows="5"
             maxLength="50"
             placeholder="Brief description about your job..."
-            className="input_style resize-none"
+            className={`${s.input_style} ${s.resize_none}`}
             value={bio}
             onChange={(e) => setBio(e.target.value)}
           />
         </div>
 
-        <div className="profile-save-changes-btn-container">
+        <div className={s.profile_save_changes_btn_container}>
           <button type="submit">
-            {isLoading ? <span className="loader"></span> : " Save Changes"}
+            {isLoading ? <span className={s.loader}></span> : " Save Changes"}
           </button>
         </div>
       </form>

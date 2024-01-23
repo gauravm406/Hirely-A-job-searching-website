@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import "./addjobs.css";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
+import s from "./addjobs.module.css";
 
 const AddJobs = () => {
-  const [image, setImage] = useState();
-  const [jobTitle, setJobTitle] = useState();
-  const [companyName, setCompanyName] = useState();
-  const [experience, setExperience] = useState();
-  const [description, setDescription] = useState();
-  const [location, setLocation] = useState();
+  const [image, setImage] = useState("");
+  const [jobTitle, setJobTitle] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const [experience, setExperience] = useState("");
+  const [description, setDescription] = useState("");
+  const [location, setLocation] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const userInfo = useSelector((state) => state.user.userInfo);
@@ -36,15 +36,10 @@ const AddJobs = () => {
         // image name
         setImage(response.data.image);
 
-        toast.success(response.data.message, {
-          position: toast.POSITION.TOP_RIGHT,
-        });
+        toast.success(response.data.message);
       }
     } catch (error) {
-      console.log(error);
-      toast.error(error.response.data.message, {
-        position: toast.POSITION.TOP_RIGHT,
-      });
+      toast.error(error.response.data.message || error.message);
     }
   };
 
@@ -61,9 +56,7 @@ const AddJobs = () => {
       description.length < 3 ||
       location.length < 3
     ) {
-      toast.error("All details are required", {
-        position: toast.POSITION.TOP_RIGHT,
-      });
+      toast.error("All details are required");
 
       setIsLoading(false);
       return;
@@ -83,36 +76,29 @@ const AddJobs = () => {
           { withCredentials: true }
         );
 
-        setIsLoading(false);
-
-        console.log(response);
-
         if (response.status == 200) {
-          toast.success(response.data.message, {
-            position: toast.POSITION.TOP_RIGHT,
-          });
+          toast.success(response.data.message);
         }
       } catch (error) {
-        console.log(error);
-        toast.error(error.response.data.message, {
-          position: toast.POSITION.TOP_RIGHT,
-        });
+        toast.error(error.response.data.message || error.message);
+      } finally {
+        setIsLoading(false);
       }
     }
   };
 
   return (
-    <div className="add-jobs-main">
-      <h3 className="profile-main-heading">Add Jobs</h3>
+    <div className={s.add_jobs_main}>
+      <h3 className={s.profile_main_heading}>Add Jobs</h3>
 
-      <section className="profile-main-btns-container">
+      <section className={s.profile_main_btns_container}>
         <button disabled>job title</button>
         <button disabled>company</button>
         <button disabled>experience</button>
       </section>
 
       <section
-        className="profile-head-desc-container"
+        className={s.profile_head_desc_container}
         style={{ marginBottom: "2rem" }}
       >
         <h4>Job</h4>
@@ -120,9 +106,9 @@ const AddJobs = () => {
       </section>
 
       <form action="" onSubmit={postJobHandler}>
-        <section className="add-job-form">
+        <section className={s.add_job_form}>
           <div>
-            <label htmlFor="jobtitle" className="label_style">
+            <label htmlFor="jobtitle" className={s.label_style}>
               Job Title
             </label>
             <input
@@ -133,7 +119,7 @@ const AddJobs = () => {
             ></input>
           </div>
           <div>
-            <label htmlFor="companyname" className="label_style">
+            <label htmlFor="companyname" className={s.label_style}>
               Company Name
             </label>
             <input
@@ -145,7 +131,7 @@ const AddJobs = () => {
           </div>
 
           <div>
-            <label htmlFor="experience" className="label_style">
+            <label htmlFor="experience" className={s.label_style}>
               Experience Required
             </label>
             <input
@@ -156,7 +142,7 @@ const AddJobs = () => {
             ></input>
           </div>
           <div>
-            <label htmlFor="description" className="label_style">
+            <label htmlFor="description" className={s.label_style}>
               Description
             </label>
             <input
@@ -168,7 +154,7 @@ const AddJobs = () => {
           </div>
 
           <div>
-            <label htmlFor="location" className="label_style">
+            <label htmlFor="location" className={s.label_style}>
               Location
             </label>
             <input
@@ -179,7 +165,7 @@ const AddJobs = () => {
             ></input>
           </div>
           <div>
-            <label htmlFor="companylogo" className="label_style">
+            <label htmlFor="companylogo" className={s.label_style}>
               Company Logo
             </label>
             <input
@@ -191,9 +177,9 @@ const AddJobs = () => {
           </div>
         </section>
 
-        <div className="profile-save-changes-btn-container">
+        <div className={s.profile_save_changes_btn_container}>
           <button type="submit">
-            {isLoading ? <span className="loader"></span> : "ADD JOB"}
+            {isLoading ? <span className={s.loader}></span> : "ADD JOB"}
           </button>
         </div>
       </form>

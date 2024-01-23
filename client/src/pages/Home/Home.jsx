@@ -6,7 +6,7 @@ const AdminHome = lazy(() =>
   import("../../components/Adminhome/AdminHome.jsx")
 );
 
-import "./home.css";
+import s from "./home.module.css";
 
 const Home = () => {
   const userInfo = useSelector((state) => state.user.userInfo);
@@ -14,7 +14,7 @@ const Home = () => {
   return userInfo?.isAdmin ? (
     <Suspense
       fallback={
-        <div className="home-loader-container">
+        <div className={s.home_loader_container}>
           <span className="loader-blue"></span>
         </div>
       }
@@ -24,7 +24,7 @@ const Home = () => {
   ) : (
     <Suspense
       fallback={
-        <div className="home-loader-container">
+        <div className={s.home_loader_container}>
           <span className="loader-blue"></span>
         </div>
       }

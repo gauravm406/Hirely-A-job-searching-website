@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { IoBagOutline } from "react-icons/io5";
 import { FaStar } from "react-icons/fa";
 import { CiLocationArrow1 } from "react-icons/ci";
-import "./applicationdetails.css";
+import s from "./applicationdetails.module.css";
 
 const ApplicantDetails = () => {
   const { userId, applicationId } = useParams();
@@ -29,11 +29,10 @@ const ApplicantDetails = () => {
         if (response?.status == 200) {
           setData(response.data);
         }
-
-        setIsLoading(false);
       } catch (error) {
+        toast.error(error.response.data.message || error.message);
+      } finally {
         setIsLoading(false);
-        console.log(error);
       }
     };
 
@@ -41,28 +40,28 @@ const ApplicantDetails = () => {
   }, [status]);
 
   return (
-    <div className="all-jobs-main">
+    <div className={s.all_jobs_main}>
       {isLoading ? (
         <span className="loader-blue"></span>
       ) : (
         data && (
-          <section className="job-details">
-            <section className="job-details-main-card">
+          <section className={s.job_details}>
+            <section className={s.job_details_main_card}>
               {" "}
-              <div className="job-title-image-container">
-                <div className="job-title-container">
+              <div className={s.job_title_image_container}>
+                <div className={s.job_title_container}>
                   <h4>{data.jobDetails.jobTitle}</h4>
                   <p>{data.jobDetails.companyName}</p>
                 </div>
-                <div className="job-image-container">
+                <div className={s.job_image_container}>
                   <img src={data.jobDetails.image} alt="" />
                 </div>
               </div>
-              <p className="rating-and-reviews">
+              <p className={s.rating_and_reviews}>
                 <FaStar style={{ color: "gold" }} /> {data.jobDetails.rating} |{" "}
                 {data.jobDetails.reviews} reviews
               </p>
-              <div className="job-location-experience-container">
+              <div className={s.job_location_experience_container}>
                 <span>
                   <CiLocationArrow1 />
                   {data.jobDetails.location.map((location, index) => (
@@ -77,20 +76,22 @@ const ApplicantDetails = () => {
             </section>
 
             {/* applicant details */}
-            <section className="job-details-main-card">
-              <div className="job-title-image-container">
-                <div className="job-title-container">
-                  <h4 className="applicant-details-head">APPLICANT DETAILS</h4>
+            <section className={s.job_details_main_card}>
+              <div className={s.job_title_image_container}>
+                <div className={s.job_title_container}>
+                  <h4 className={s.applicant_details_head}>
+                    APPLICANT DETAILS
+                  </h4>
                   <hr style={{ margin: "0.5rem 0rem" }} />
                   <h4>{data.user.name}</h4>
                   <p>{data.user.bio}</p>
                 </div>
-                <div className="job-image-container">
-                  <div className="navbar-profile-pic-container"></div>
+                <div className={s.job_image_container}>
+                  <div className={s.navbar_profile_pic_container}></div>
                 </div>
               </div>
-              <p className="rating-and-reviews">{data.user.email}</p>
-              <div className="job-location-experience-container">
+              <p className={s.rating_and_reviews}>{data.user.email}</p>
+              <div className={s.job_location_experience_container}>
                 <span>
                   <CiLocationArrow1 />
                   {data.user.location}
@@ -100,7 +101,7 @@ const ApplicantDetails = () => {
                   <p>{data.user.email} years</p>
                 </span>
               </div>
-              <p className="rating-and-reviews">
+              <p className={s.rating_and_reviews}>
                 Status:{" "}
                 <span
                   style={
@@ -117,7 +118,7 @@ const ApplicantDetails = () => {
             </section>
 
             {data.applicationDetails[0].status == "pending" && (
-              <section className="details-buttons-container">
+              <section className={s.details_buttons_container}>
                 <button onClick={() => setStatus("approved")}>APPROVE</button>
                 <button onClick={() => setStatus("declined")}>DECLINE</button>
               </section>

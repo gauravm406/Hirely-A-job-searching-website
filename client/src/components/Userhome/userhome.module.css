@@ -1,6 +1,6 @@
 @import "../../index.css";
 
-.home-main {
+.home_main {
   background-color: rgb(238, 239, 243);
   padding: 0rem 1rem;
   height: calc(100vh - 4.5321rem);
@@ -8,7 +8,7 @@
   overflow: auto;
 }
 
-.home-loader-container {
+.home_loader_container {
   height: 100%;
   width: 100%;
   display: flex;
@@ -16,11 +16,11 @@
   align-items: center;
 }
 
-.home-main::-webkit-scrollbar {
+.home_main::-webkit-scrollbar {
   display: none;
 }
 
-.home-stats-container {
+.home_stats_container {
   display: flex;
   gap: 1rem;
   justify-content: space-around;
@@ -28,7 +28,7 @@
   margin-bottom: 3rem;
 }
 
-.home-stats {
+.home_stats {
   width: 16rem;
   padding: 0rem 0.8rem;
   border-radius: 1rem;
@@ -45,51 +45,51 @@
   place-items: center;
 }
 
-.home-status-logo-container {
+.home_status_logo_container {
   padding: 0.3rem 0.5rem;
   border: 2px dashed;
   border-radius: 10px;
 }
 
-.home-stats-desc p {
+.home_stats_desc p {
   color: rgba(247, 245, 245, 0.8);
 }
 
-.home-stats h2 {
+.home_stats h2 {
   font-weight: 700;
   font-size: 3rem;
 }
 
-.home-stats-logo-desc-container {
+.home_stats_logo_desc_container {
   display: flex;
 }
 
-.home-chart-container {
+.home_chart_container {
   width: 80%;
   margin: auto;
   padding-bottom: 2rem;
 }
 
 @media only screen and (max-width: 1025px) {
-  .home-chart-container {
+  .home_chart_container {
     width: 90%;
   }
 
-  .home-stats {
+  .home_stats {
     width: 80%;
   }
 
-  .home-stats-container {
+  .home_stats_container {
     margin-bottom: 10rem;
   }
 }
 
 @media only screen and (max-width: 820px) {
-  .home-chart-container {
+  .home_chart_container {
     width: 95%;
   }
 
-  .home-stats-container {
+  .home_stats_container {
     flex-direction: column;
     align-items: center;
     margin-bottom: 10rem;
@@ -97,7 +97,7 @@
 }
 
 @media only screen and (max-width: 480px) {
-  .home-stats-container {
+  .home_stats_container {
     flex-direction: column;
     align-items: center;
     margin-bottom: 5rem;

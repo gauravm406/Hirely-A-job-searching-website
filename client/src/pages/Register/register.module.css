@@ -1,6 +1,6 @@
 @import "../../index.css";
 
-.register-main {
+.register_main {
   padding: 3rem 7rem;
   display: flex;
   gap: 3rem;
@@ -8,7 +8,7 @@
   align-items: center;
 }
 
-.register-aside-container {
+.register_aside_container {
   width: 35%;
   background-color: var(--primary-blue-color);
   padding: 2.5rem;
@@ -16,43 +16,43 @@
   color: white;
 }
 
-.register-aside-brandname {
+.register_aside_brandname {
   font-weight: 800;
   font-size: 1.5rem;
   letter-spacing: 2.4px;
 }
 
-.register-aside-slogan {
+.register_aside_slogan {
   font-weight: 500;
   font-size: 1.875rem;
   margin-top: 40px;
 }
 
-.register-aside-description {
+.register_aside_description {
   margin-top: 24px;
 }
 
-.register-aside-review-container {
+.register_aside_review_container {
   padding: 1rem;
   border-radius: 0.75rem;
   margin-top: 40px;
   background-color: rgb(30, 64, 175);
 }
 
-.register-aside-review-container section {
+.register_aside_review_container section {
   margin-top: 0.5rem;
   text-align: end;
 }
 
-.register-aside-review-container section h4 {
+.register_aside_review_container section h4 {
   font-size: 1.125rem;
 }
 
-.register-aside-review-container section p {
+.register_aside_review_container section p {
   color: var(--primary-gray-color);
 }
 
-.register-form-container {
+.register_form_container {
   width: calc(50%);
   display: flex;
   flex-direction: column;
@@ -60,25 +60,25 @@
   gap: 3rem;
 }
 
-.register-form-container h2 {
+.register_form_container h2 {
   font-size: 2.25rem;
   font-weight: 500;
 }
 
-.register-signup-form,
-.register-login-form {
+.register_signup_form,
+.register_login_form {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
-.register-signup-form label,
-.register-login-form label {
+.register_signup_form label,
+.register_login_form label {
   color: var(--primary-gray-color);
 }
 
-.register-signup-form input,
-.register-login-form input {
+.register_signup_form input,
+.register_login_form input {
   margin-bottom: 1rem;
   padding: 1.5rem;
   font-weight: 400;
@@ -88,18 +88,18 @@
   transition: 0.3s ease;
 }
 
-.register-signup-form input:hover,
-.register-login-form input:hover {
+.register_signup_form input:hover,
+.register_login_form input:hover {
   border: 1px solid var(--primary-blue-color);
 }
 
-.register-signup-form input:focus,
-.register-login-form input:focus {
+.register_signup_form input:focus,
+.register_login_form input:focus {
   outline: 1px solid var(--primary-blue-color);
 }
 
-.register-signup-form button,
-.register-login-form button {
+.register_signup_form button,
+.register_login_form button {
   margin-top: 1rem;
   padding: 1.1rem;
   border-radius: 0.375rem;
@@ -113,7 +113,7 @@
   align-items: center;
 }
 
-.register-login-form .register-demo-user {
+.register_login_form .register_demo_user {
   margin-top: 1rem;
   color: var(--primary-gray-color);
   cursor: pointer;
@@ -124,45 +124,45 @@
   gap: 0.5rem;
 }
 
-.register-login-form span:hover {
+.register_login_form span:hover {
   color: var(--primary-blue-color);
 }
 
-.register-question {
+.register_question {
   color: var(--primary-gray-color);
 }
 
-.register-question span {
+.register_question span {
   color: var(--primary-blue-color);
   cursor: pointer;
 }
 
 @media only screen and (max-width: 1025px) {
-  .register-main {
+  .register_main {
     height: 100vh;
   }
 
-  .register-aside-container {
+  .register_aside_container {
     width: 40%;
   }
 }
 
 @media only screen and (max-width: 820px) {
-  .register-main {
+  .register_main {
     height: 100vh;
   }
 
-  .register-aside-container {
+  .register_aside_container {
     display: none;
   }
 
-  .register-form-container {
+  .register_form_container {
     width: 100%;
   }
 }
 
 @media only screen and (max-width: 480px) {
-  .register-main {
+  .register_main {
     padding: 1rem;
     height: 100vh;
   }

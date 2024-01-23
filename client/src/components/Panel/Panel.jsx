@@ -15,7 +15,7 @@ import { removeApplication } from "../../store/slices/applications.js";
 import { FiSend } from "react-icons/fi";
 import { makeSidebarInactive } from "../../store/slices/user.js";
 import axios from "axios";
-import "./panel.css";
+import s from "./panel.module.css";
 
 const Panel = () => {
   const [currentPage, setCurrentPage] = useState(
@@ -59,24 +59,20 @@ const Panel = () => {
       localStorage.removeItem("currentPage");
 
       // success message
-      toast.success(logOutResponse?.data?.message, {
-        position: toast.POSITION.TOP_RIGHT,
-      });
+      toast.success(logOutResponse?.data?.message);
     } catch (error) {
-      toast.success(error.message, {
-        position: toast.POSITION.TOP_RIGHT,
-      });
+      toast.success(error.message || error.response.data.message);
     }
   };
 
   return (
-    <div className="panel-main">
-      <section className="panel-logo-brand-container">
+    <div className={s.panel_main}>
+      <section className={s.panel_logo_brand_container}>
         <h2>Hirely</h2>
       </section>
-      <section className="panel-menu-container">
+      <section className={s.panel_menu_container}>
         <div
-          className={currentPage === "HOME" ? "active-page" : ""}
+          className={currentPage === "HOME" ? `${s.active_page}` : ""}
           onClick={() => {
             navigate("/");
             setCurrentPage("HOME");
@@ -87,7 +83,7 @@ const Panel = () => {
           <h3>Home</h3>
         </div>
         <div
-          className={currentPage === "ALL_JOBS" ? "active-page" : ""}
+          className={currentPage === "ALL_JOBS" ? `${s.active_page}` : ""}
           onClick={() => {
             navigate("/all_jobs");
             setCurrentPage("ALL_JOBS");
@@ -103,8 +99,8 @@ const Panel = () => {
             <div
               className={
                 currentPage === "BOOKMARKS"
-                  ? "active-page panel-menu-item"
-                  : "panel-menu-item"
+                  ? `${s.active_page} ${s.panel_menu_item}`
+                  : `${s.panel_menu_item}`
               }
               onClick={() => {
                 navigate("/bookmarks");
@@ -115,7 +111,7 @@ const Panel = () => {
               <FaRegBookmark size={24} />
               <h3>Bookmarks</h3>
               {userInfo && (
-                <div className="panel-bookmark-number">
+                <div className={s.panel_bookmark_number}>
                   {userInfo.bookmarkItems.length}
                 </div>
               )}
@@ -123,8 +119,8 @@ const Panel = () => {
             <div
               className={
                 currentPage === "APPLIES"
-                  ? "active-page panel-menu-item"
-                  : "panel-menu-item"
+                  ? `${s.active_page} ${s.panel_menu_item}`
+                  : `${s.panel_menu_item}`
               }
               onClick={() => {
                 navigate("/applieS");
@@ -135,7 +131,7 @@ const Panel = () => {
               <MdDoneAll size={24} />
               <h3>Applies</h3>
               {userInfo && (
-                <div className="panel-bookmark-number">
+                <div className={s.panel_bookmark_number}>
                   {userInfo.appliedJobs.length}
                 </div>
               )}
@@ -146,8 +142,8 @@ const Panel = () => {
           <div
             className={
               currentPage === "APPLICATIONS"
-                ? "active-page panel-menu-item"
-                : "panel-menu-item"
+                ? `${s.active_page} ${s.panel_menu_item}`
+                : `${s.panel_menu_item}`
             }
             onClick={() => {
               navigate("/applications");
@@ -157,14 +153,14 @@ const Panel = () => {
           >
             <FiSend size={24} />
             <h3>Applications</h3>
-            <div className="panel-bookmark-number">
+            <div className={s.panel_bookmark_number}>
               {applicationsData?.length}
             </div>
           </div>
         )}
         {userInfo?.isAdmin && (
           <div
-            className={currentPage === "ADD_JOBS" ? "active-page" : ""}
+            className={currentPage === "ADD_JOBS" ? `${s.active_page}` : ""}
             onClick={() => {
               navigate("/add_jobs");
               setCurrentPage("ADD_JOBS");
@@ -176,7 +172,7 @@ const Panel = () => {
           </div>
         )}
         <div
-          className={currentPage === "PROFILE" ? "active-page" : ""}
+          className={currentPage === "PROFILE" ? `${s.active_page}` : ""}
           onClick={() => {
             navigate("/profile");
             setCurrentPage("PROFILE");
@@ -186,7 +182,7 @@ const Panel = () => {
           <MdPersonOutline size={24} />
           <h3>Profile</h3>
         </div>
-        <div className="panel-logout-btn-container" onClick={handleLogout}>
+        <div className={s.panel_logout_btn_container} onClick={handleLogout}>
           <TbLogout size={24} />
           <h3>Logout</h3>
         </div>

@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import { addUser } from "../../store/slices/user.js";
 import { useDispatch } from "react-redux";
 import axios from "axios";
+import s from "./jobcard.module.css";
 
 const JobCard = ({ job }) => {
   const [isBookmarked, setIsBookmarked] = useState(false);
@@ -81,27 +82,27 @@ const JobCard = ({ job }) => {
   }, [userInfo, job._id]);
 
   return (
-    <div className="job-card">
+    <div className={s.job_card}>
       <div
-        className="job-title-image-container"
+        className={s.job_title_image_container}
         onClick={() => navigate(`/job_details/${job._id}`)}
       >
-        <div className="job-title-container">
+        <div className={s.job_title_container}>
           <h4>{job.jobTitle}</h4>
           <p>{job.companyName}</p>
         </div>
-        <div className="job-image-container">
+        <div className={s.job_image_container}>
           <img
             src={`${import.meta.env.VITE_REACT_APP_HOST}/${job.image}`}
             alt={job.companyName}
           />
         </div>
       </div>
-      <p className="rating-and-reviews">
+      <p className={s.rating_and_reviews}>
         <FaStar style={{ color: "gold" }} /> {job.rating} | {job.reviews}{" "}
         reviews
       </p>
-      <div className="job-location-experience-container">
+      <div className={s.job_location_experience_container}>
         <span>
           <CiLocationArrow1 />
           {job.location.map((location, index) => (
@@ -113,9 +114,9 @@ const JobCard = ({ job }) => {
           <p>{job.experience} years</p>
         </span>
       </div>
-      <div className="job-buttons-container">
+      <div className={s.job_buttons_container}>
         <button
-          className="save"
+          className={s.save}
           onClick={handleBookmark}
           disabled={userInfo?.isAdmin}
         >
@@ -127,7 +128,9 @@ const JobCard = ({ job }) => {
         </button>
         <button
           className={
-            status.length > 0 || userInfo?.isAdmin ? "disabled apply" : "apply"
+            status.length > 0 || userInfo?.isAdmin
+              ? `${s.disabled} ${s.apply}`
+              : s.apply
           }
           onClick={handleApplied}
           disabled={status.length > 0 || userInfo?.isAdmin}
