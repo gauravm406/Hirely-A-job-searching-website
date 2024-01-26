@@ -40,7 +40,7 @@ const Userhome = () => {
     let currDate = null;
     let dates = [];
 
-    userInfo?.appliedJobs.forEach((item) => {
+    userInfo?.appliedJobs?.forEach((item) => {
       const appliedDate = new Date(item.appliedAt).toISOString().split("T")[0];
 
       if (!dates.includes(appliedDate)) {

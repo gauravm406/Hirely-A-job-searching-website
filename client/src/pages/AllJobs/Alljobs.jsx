@@ -5,7 +5,7 @@ import { MdOutlineKeyboardDoubleArrowLeft } from "react-icons/md";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { toast } from "react-toastify";
-import JobCard from "../../components/JobCard/JobCard";
+import { JobCard } from "../../components/index";
 import s from "./alljobs.module.css";
 
 const Alljobs = () => {

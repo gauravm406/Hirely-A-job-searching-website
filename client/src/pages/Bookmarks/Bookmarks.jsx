@@ -5,7 +5,7 @@ import { MdOutlineKeyboardDoubleArrowLeft } from "react-icons/md";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { useSelector } from "react-redux";
-import JobCard from "../../components/JobCard/JobCard";
+import { JobCard } from "../../components/index";
 import { toast } from "react-toastify";
 import s from "./bookmarks.module.css";
 

@@ -1,0 +1,6 @@
+.custom_toast {
+  margin: 2rem auto 0.5rem auto;
+  border-radius: 10px;
+  width: max-content;
+  height: max-content;
+}

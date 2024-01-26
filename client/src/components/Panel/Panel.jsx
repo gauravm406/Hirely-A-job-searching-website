@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
 import { FiHome } from "react-icons/fi";
 import { BsFilesAlt } from "react-icons/bs";
 import { FaPlus } from "react-icons/fa6";
 import { MdPersonOutline } from "react-icons/md";
 import { TbLogout } from "react-icons/tb";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
@@ -18,15 +17,6 @@ import axios from "axios";
 import s from "./panel.module.css";
 
 const Panel = () => {
-  const [currentPage, setCurrentPage] = useState(
-    localStorage.getItem("currentPage") || "HOME"
-  );
-
-  // data will not be lost
-  useEffect(() => {
-    localStorage.setItem("currentPage", currentPage);
-  }, [currentPage]);
-
   const userInfo = useSelector((state) => state.user.userInfo);
 
   const applicationsData = useSelector(
@@ -56,12 +46,10 @@ const Panel = () => {
 
       navigate("/welcome");
 
-      localStorage.removeItem("currentPage");
-
       // success message
       toast.success(logOutResponse?.data?.message);
     } catch (error) {
-      toast.success(error.message || error.response.data.message);
+      toast.error(error.message || error.response.data.message);
     }
   };
 
@@ -71,117 +59,120 @@ const Panel = () => {
         <h2>Hirely</h2>
       </section>
       <section className={s.panel_menu_container}>
-        <div
-          className={currentPage === "HOME" ? `${s.active_page}` : ""}
+        <NavLink
+          className={({ isActive, isPending }) =>
+            isPending ? "" : isActive ? s.active_link : ""
+          }
+          to="/"
           onClick={() => {
-            navigate("/");
-            setCurrentPage("HOME");
             dispatch(makeSidebarInactive());
           }}
         >
           <FiHome size={24} />
-          <h3>Home</h3>
-        </div>
-        <div
-          className={currentPage === "ALL_JOBS" ? `${s.active_page}` : ""}
+          <span>Home</span>
+        </NavLink>
+        <NavLink
+          className={({ isActive, isPending }) =>
+            isPending ? "" : isActive ? s.active_link : ""
+          }
+          to="/all_jobs"
           onClick={() => {
-            navigate("/all_jobs");
-            setCurrentPage("ALL_JOBS");
             dispatch(makeSidebarInactive());
           }}
         >
           <BsFilesAlt size={24} />
-          <h3>All Jobs</h3>
-        </div>
+          <span>All Jobs</span>
+        </NavLink>
 
         {!userInfo?.isAdmin && (
           <>
-            <div
-              className={
-                currentPage === "BOOKMARKS"
-                  ? `${s.active_page} ${s.panel_menu_item}`
+            <NavLink
+              className={({ isActive, isPending }) =>
+                isPending
+                  ? `${s.panel_menu_item}`
+                  : isActive
+                  ? `${s.active_link} ${s.panel_menu_item}`
                   : `${s.panel_menu_item}`
               }
+              to="/bookmarks"
               onClick={() => {
-                navigate("/bookmarks");
-                setCurrentPage("BOOKMARKS");
                 dispatch(makeSidebarInactive());
               }}
             >
               <FaRegBookmark size={24} />
-              <h3>Bookmarks</h3>
+              <span>Bookmarks</span>
               {userInfo && (
                 <div className={s.panel_bookmark_number}>
-                  {userInfo.bookmarkItems.length}
+                  {userInfo.bookmarkItems?.length}
                 </div>
               )}
-            </div>
-            <div
-              className={
-                currentPage === "APPLIES"
-                  ? `${s.active_page} ${s.panel_menu_item}`
+            </NavLink>
+            <NavLink
+              className={({ isActive, isPending }) =>
+                isPending
+                  ? `${s.panel_menu_item}`
+                  : isActive
+                  ? `${s.active_link} ${s.panel_menu_item}`
                   : `${s.panel_menu_item}`
               }
+              to="/applies"
               onClick={() => {
-                navigate("/applieS");
-                setCurrentPage("APPLIES");
                 dispatch(makeSidebarInactive());
               }}
             >
               <MdDoneAll size={24} />
-              <h3>Applies</h3>
+              <span>Applies</span>
               {userInfo && (
                 <div className={s.panel_bookmark_number}>
-                  {userInfo.appliedJobs.length}
+                  {userInfo.appliedJobs?.length}
                 </div>
               )}
-            </div>
+            </NavLink>
           </>
         )}
         {userInfo?.isAdmin && (
-          <div
-            className={
-              currentPage === "APPLICATIONS"
-                ? `${s.active_page} ${s.panel_menu_item}`
-                : `${s.panel_menu_item}`
+          <NavLink
+            className={({ isActive, isPending }) =>
+              isPending ? "" : isActive ? s.active_link : ""
             }
+            to="/applications"
             onClick={() => {
-              navigate("/applications");
-              setCurrentPage("APPLICATIONS");
               dispatch(makeSidebarInactive());
             }}
           >
             <FiSend size={24} />
-            <h3>Applications</h3>
+            <span>Applications</span>
             <div className={s.panel_bookmark_number}>
               {applicationsData?.length}
             </div>
-          </div>
+          </NavLink>
         )}
         {userInfo?.isAdmin && (
-          <div
-            className={currentPage === "ADD_JOBS" ? `${s.active_page}` : ""}
+          <NavLink
+            className={({ isActive, isPending }) =>
+              isPending ? "" : isActive ? s.active_link : ""
+            }
+            to="/add_jobs"
             onClick={() => {
-              navigate("/add_jobs");
-              setCurrentPage("ADD_JOBS");
               dispatch(makeSidebarInactive());
             }}
           >
             <FaPlus size={24} />
-            <h3>Add Jobs</h3>
-          </div>
+            <span>Add Jobs</span>
+          </NavLink>
         )}
-        <div
-          className={currentPage === "PROFILE" ? `${s.active_page}` : ""}
+        <NavLink
+          className={({ isActive, isPending }) =>
+            isPending ? "" : isActive ? s.active_link : ""
+          }
+          to="/profile"
           onClick={() => {
-            navigate("/profile");
-            setCurrentPage("PROFILE");
             dispatch(makeSidebarInactive());
           }}
         >
           <MdPersonOutline size={24} />
-          <h3>Profile</h3>
-        </div>
+          <span>Profile</span>
+        </NavLink>
         <div className={s.panel_logout_btn_container} onClick={handleLogout}>
           <TbLogout size={24} />
           <h3>Logout</h3>

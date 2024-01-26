@@ -27,7 +27,8 @@
   gap: 2rem;
 }
 
-.panel_menu_container div {
+.panel_menu_container a {
+  text-decoration: none;
   padding: 0.5rem 1.5rem;
   display: flex;
   align-items: center;
@@ -38,7 +39,7 @@
   transition: 0.1s ease-in;
 }
 
-.panel_menu_container div:hover {
+.panel_menu_container a:hover {
   background-color: rgb(238, 239, 243);
 }
 
@@ -48,6 +49,15 @@
 }
 
 .panel_logout_btn_container {
+  text-decoration: none;
+  padding: 0.5rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  color: var(--primary-gray-color);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.1s ease-in;
   color: rgb(248, 113, 113) !important;
   background-color: rgba(254, 226, 226, 0.6);
 }
@@ -56,7 +66,7 @@
   background-color: rgba(254, 226, 226, 0.9) !important;
 }
 
-.active_page {
+.active_link {
   color: var(--primary-blue-color) !important;
   background-color: rgb(238, 239, 243);
 }
